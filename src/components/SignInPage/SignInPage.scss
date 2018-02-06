@@ -49,6 +49,9 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      .ch-login-form__footer-content {
+        margin-bottom: 15px;
+      }
     }
   }
 }

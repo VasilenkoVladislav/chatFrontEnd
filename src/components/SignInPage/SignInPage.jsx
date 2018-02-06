@@ -2,6 +2,7 @@ import './SignInPage.scss';
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import PropTypes from 'prop-types';
+import { validateRegistrationSignIn } from 'constants/validateConstants';
 
 const propTypes = {
     isLoading: PropTypes.bool.isRequired,
@@ -11,17 +12,43 @@ const propTypes = {
 class SignInPage extends Component {
     constructor (props) {
         super(props);
-        this.state = { emailValue: '', passwordValue: '' };
+        this.state = {
+            email: '',
+            password: '',
+            emailValid: false,
+            passwordValid: false,
+            formValid: false
+        };
     }
     signInOnClick = () => {
-        this.props.signIn(this.state.emailValue, this.state.passwordValue);
-        this.setState({ emailValue: '', passwordValue: '' });
+        if (this.state.formValid) {
+            this.props.signIn(this.state.email, this.state.password);
+            this.setState({ email: '', password: '' });
+        }
     };
-    handleChangeEmailInput = (event) => {
-        this.setState({ emailValue: event.target.value });
+    handleChangeInput = (event) => {
+        const name = event.target.name;
+        const value = event.target.value;
+        this.setState({ [name]: value }, () => this.validateField(name, value));
     };
-    handleChangePasswordInput = (event) => {
-        this.setState({ passwordValue: event.target.value });
+    validateField = (fieldName, value) => {
+        let emailValid = this.state.emailValid;
+        let passwordValid = this.state.passwordValid;
+        switch (fieldName) {
+        case 'email':
+            emailValid = (validateRegistrationSignIn.email).test(value);
+            break;
+        case 'password':
+            passwordValid = (validateRegistrationSignIn.password).test(value);
+            break;
+        default:
+            break;
+        }
+        this.setState({
+            emailValid,
+            passwordValid,
+            formValid: emailValid && passwordValid
+        });
     };
     render () {
         return (
@@ -35,9 +62,10 @@ class SignInPage extends Component {
                             <input type="email"
                                 className="ch-login-form__input"
                                 placeholder="Type your username"
+                                name="email"
                                 maxLength={30}
-                                value={this.state.emailValue}
-                                onChange={this.handleChangeEmailInput}/>
+                                value={this.state.email}
+                                onChange={this.handleChangeInput}/>
                         </div>
                         <div className="ch-login-form__input-wrap">
                             <span className="ch-login-form__label">Password</span>
@@ -45,9 +73,10 @@ class SignInPage extends Component {
                             <input type="password"
                                 className="ch-login-form__input"
                                 placeholder="Type your password"
+                                name="password"
                                 maxLength={30}
-                                value={this.state.passwordValue}
-                                onChange={this.handleChangePasswordInput}/>
+                                value={this.state.password}
+                                onChange={this.handleChangeInput}/>
                         </div>
                         <div className="ch-login-form__forgot-pass-wrap">
                             <Link className="ch-login-form__link">Forgot password?</Link>
@@ -72,7 +101,7 @@ class SignInPage extends Component {
                         </div>
                     </div>
                     <footer className="ch-login-form__footer">
-                        <span className="ch-login-form__text-content ch-margin-bottom-big">Or Sign Up Using</span>
+                        <span className="ch-login-form__text-content ch-login-form__footer-content">Or Sign Up Using</span>
                         <Link to="/registration" className="ch-login-form__link">SIGN UP</Link>
                     </footer>
                 </form>
