@@ -1,0 +1,50 @@
+@import '../.././utils/variables';
+@import "../.././utils/fonts";
+@import "../.././utils/margin";
+
+html, body {
+  font-family: $main_font;
+  font-size: $font_size;
+}
+
+input:focus::-webkit-input-placeholder { color:transparent; }
+input:focus:-moz-placeholder { color:transparent; }
+input:focus::-moz-placeholder { color:transparent; }
+input:focus:-ms-input-placeholder { color:transparent; }
+
+textarea:focus::-webkit-input-placeholder { color:transparent; }
+textarea:focus:-moz-placeholder { color:transparent; }
+textarea:focus::-moz-placeholder { color:transparent; }
+textarea:focus:-ms-input-placeholder { color:transparent; }
+
+input::-webkit-input-placeholder { color: $color-placeholder;}
+input:-moz-placeholder { color: $color-placeholder;}
+input::-moz-placeholder { color: $color-placeholder;}
+input:-ms-input-placeholder { color: $color-placeholder;}
+
+textarea::-webkit-input-placeholder { color: $color-placeholder;}
+textarea:-moz-placeholder { color: $color-placeholder;}
+textarea::-moz-placeholder { color: $color-placeholder;}
+textarea:-ms-input-placeholder { color: $color-placeholder;}
+
+
+
+.ch {
+  .ch-container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../../../public/static/images/bgc-image.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    //background: #9053c7;
+    //background: -webkit-linear-gradient(-135deg, #c850c0, #4158d0);
+    //background: -o-linear-gradient(-135deg, #c850c0, #4158d0);
+    //background: -moz-linear-gradient(-135deg, #c850c0, #4158d0);
+    //background: linear-gradient(-135deg, #c850c0, #4158d0);
+  }
+}

@@ -1,0 +1,13 @@
+@mixin fontsConnect ($name) {
+  @font-face {
+    font-family: $name;
+    src: url("/static/fonts/#{$name}.otf");
+  }
+}
+
+@include fontsConnect('Poppins-Bold');
+@include fontsConnect('Poppins-Bold');
+@include fontsConnect('Poppins-Light');
+@include fontsConnect('Poppins-Regular');
+@include fontsConnect('Poppins-Medium');
+@include fontsConnect('Poppins-SemiBold');
