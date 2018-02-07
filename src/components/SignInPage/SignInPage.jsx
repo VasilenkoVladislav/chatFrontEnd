@@ -6,7 +6,8 @@ import { validateRegistrationSignIn } from 'constants/validateConstants';
 
 const propTypes = {
     isLoading: PropTypes.bool.isRequired,
-    signIn: PropTypes.func.isRequired
+    signIn: PropTypes.func.isRequired,
+    oAuthSignIn: PropTypes.func.isRequired
 };
 
 class SignInPage extends Component {
@@ -20,11 +21,15 @@ class SignInPage extends Component {
             formValid: false
         };
     }
-    signInOnClick = () => {
+    signInOnClick = (event) => {
         if (this.state.formValid) {
             this.props.signIn(this.state.email, this.state.password);
             this.setState({ email: '', password: '' });
         }
+        event.preventDefault();
+    };
+    oAuthSignInOnClick = (provider) => {
+        this.props.oAuthSignIn(provider);
     };
     handleChangeInput = (event) => {
         const name = event.target.name;
@@ -89,13 +94,13 @@ class SignInPage extends Component {
                             <span className="ch-login-form__text-content">Or Sign Up Using</span>
                         </div>
                         <div className="ch-login-form__social-wrap">
-                            <a href="#" className="ch-login-form__social-link ch-login-form__social-link_facebook">
+                            <a className="ch-login-form__social-link ch-login-form__social-link_facebook" onClick={this.oAuthSignInOnClick.bind(this, 'facebook')}>
                                 <i className="fab fa-facebook-f"/>
                             </a>
-                            <a href="#" className="ch-login-form__social-link ch-login-form__social-link_twitter">
+                            <a className="ch-login-form__social-link ch-login-form__social-link_twitter" onClick={this.oAuthSignInOnClick.bind(this, 'twitter')}>
                                 <i className="fab fa-twitter"/>
                             </a>
-                            <a href="#" className="ch-login-form__social-link ch-login-form__social-link_google">
+                            <a className="ch-login-form__social-link ch-login-form__social-link_google" onClick={this.oAuthSignInOnClick.bind(this, 'google')}>
                                 <i className="fab fa-google"/>
                             </a>
                         </div>
