@@ -1,0 +1,5 @@
+@import "../../utils/mixins";
+
+.ch-registration {
+  @include formStyle('registration', 500px, 55px);
+}

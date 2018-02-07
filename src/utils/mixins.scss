@@ -1,3 +1,5 @@
+@import "variables";
+
 @mixin formStyle ($element, $width-form, $padding-form) {
   .ch-#{$element}-form {
     width: $width-form;
@@ -6,6 +8,13 @@
     padding: $padding-form;
     overflow: hidden;
     box-sizing: border-box;
+    &__header {
+      font-size: 40px;
+      line-height: 1.2;
+      text-align: center;
+      padding-bottom: 50px;
+      font-family: Poppins-Bold;
+    }
     &__input-wrap {
       width: 100%;
       position: relative;
@@ -25,7 +34,6 @@
       color: gray;
     }
     &__label {
-      color: #333333;
       line-height: 1.5;
     }
     &__input {

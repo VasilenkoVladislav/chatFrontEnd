@@ -3,14 +3,6 @@
 .ch-login {
   @include formStyle('login', 500px, 55px);
   .ch-login-form {
-    .ch-login-form__header {
-      font-size: 40px;
-      color: #333333;
-      line-height: 1.2;
-      text-align: center;
-      padding-bottom: 50px;
-      font-family: Poppins-Bold;
-    }
     .ch-login-form__text-wrap {
       padding: 50px 50px 25px 50px;
       text-align: center;
