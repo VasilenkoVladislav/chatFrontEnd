@@ -62,11 +62,11 @@ class SignInPage extends Component {
                     <header className="ch-login-form__header">Login</header>
                     <div className="ch-login-from__container">
                         <div className="ch-login-form__input-wrap">
-                            <span className="ch-login-form__label">Username</span>
-                            <i className="ch-login-form__icon fas fa-user"/>
+                            <span className="ch-login-form__label">Email</span>
+                            <i className="ch-login-form__icon fas fa-envelope"/>
                             <input type="email"
                                 className="ch-login-form__input"
-                                placeholder="Type your username"
+                                placeholder="Type your email"
                                 name="email"
                                 maxLength={30}
                                 value={this.state.email}
