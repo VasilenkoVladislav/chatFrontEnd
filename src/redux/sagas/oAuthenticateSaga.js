@@ -1,4 +1,4 @@
-import { signInSuccess, signInError } from 'redux/actions/authenticateActions';
+import { signInSuccess, signInError } from 'redux/actions/entities/authenticateActions';
 import { takeEvery, put, call } from 'redux-saga/effects';
 import { VALIDATE_TOKEN_REQUEST, OAUTHENTICATE_REQUEST } from 'redux/constansActions';
 import api from 'configApi/apiAuth';
@@ -8,7 +8,7 @@ import { openPopupOAuthSignIn} from 'redux/utils/popup';
 import queryString from 'query-string';
 import { replace } from 'react-router-redux';
 import { updateHeadersClient } from 'redux/sagas/headersSaga';
-import { validateTokenRequest } from 'redux/actions/oAuthenticateActions';
+import { validateTokenRequest } from 'redux/actions/entities/oAuthenticateActions';
 
 function * oAuthSignIn ({payload}) {
     const popup = openPopupOAuthSignIn(payload);

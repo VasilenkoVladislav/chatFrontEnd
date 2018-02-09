@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
-import { getUserIsLoadingState } from 'redux/selectors/userSelectors';
+import { getUserIsLoadingState } from 'redux/selectors/entities/userSelectors';
 import RegistrationPage from './RegistrationPage';
-import { registrationRequest } from 'redux/actions/registrationActions';
+import { registrationRequest } from 'redux/actions/entities/registrationActions';
 
 function mapStateToProps (state) {
     return {

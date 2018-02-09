@@ -1,4 +1,4 @@
-import { UPDATE_HEADERS, SIGN_OUT_SUCCESS } from '../../constansActions';
+import { UPDATE_HEADERS, SIGN_OUT_SUCCESS } from 'redux/constansActions';
 
 const initialState = { };
 

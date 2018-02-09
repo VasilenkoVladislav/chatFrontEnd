@@ -1,7 +1,7 @@
 import { put, call} from 'redux-saga/effects';
 import { authTokenFormat } from 'default/tokenFormat';
 import { updateCookieClient } from 'redux/sagas/cookiesSaga';
-import { updateHeaders } from 'redux/actions/headersActions';
+import { updateHeaders } from 'redux/actions/entities/headersActions';
 
 export function * updateHeadersClient (headers) {
     if (headers && headers['access-token'] && headers['client'] && headers['uid']) {

@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
-import { getUserIsLoadingState } from 'redux/selectors/userSelectors';
-import { oAuthSignInRequest } from 'redux/actions/oAuthenticateActions';
+import { getUserIsLoadingState } from 'redux/selectors/entities/userSelectors';
+import { oAuthSignInRequest } from 'redux/actions/entities/oAuthenticateActions';
 import SignInPage from './SignInPage';
-import { signInRequest } from 'redux/actions/authenticateActions';
+import { signInRequest } from 'redux/actions/entities/authenticateActions';
 
 function mapStateToProps (state) {
     return {

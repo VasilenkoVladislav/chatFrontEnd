@@ -1,12 +1,13 @@
 import { Route, IndexRedirect} from 'react-router';
 import App from 'components/App';
+import { getUserIsSignInState } from 'redux/selectors/entities/userSelectors';
 import MainPage from 'components/MainPage';
 import React from 'react';
 import RegistrationPage from 'components/RegistrationPage';
 import SignInPage from 'components/SignInPage';
 
 function requireAuth (nextState, replace, cb) {
-    if (!store.getState().entities.user.isSignIn) {
+    if (!getUserIsSignInState(store.getState())) {
         replace({
             pathname: '/sign_in'
         });
@@ -15,7 +16,7 @@ function requireAuth (nextState, replace, cb) {
 }
 
 function requireAlreadyAuth (nextState, replace, cb) {
-    if (store.getState().entities.user.isSignIn) {
+    if (getUserIsSignInState(store.getState())) {
         replace({
             pathname: '/'
         });

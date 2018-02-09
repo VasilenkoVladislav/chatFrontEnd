@@ -63,7 +63,7 @@
       -o-transition: all 0.4s;
       -moz-transition: all 0.4s;
       &:hover {
-        color: #a64bf4;
+        color: $color-hover;
       }
     }
     &__button-wrap {
@@ -85,7 +85,7 @@
       z-index: -1;
       width: 300%;
       height: 100%;
-      background: #a64bf4;
+      background: $color-hover;
       background: -webkit-linear-gradient(right, #00dbde, #fc00ff, #00dbde, #fc00ff);
       background: -o-linear-gradient(right, #00dbde, #fc00ff, #00dbde, #fc00ff);
       background: -moz-linear-gradient(right, #00dbde, #fc00ff, #00dbde, #fc00ff);

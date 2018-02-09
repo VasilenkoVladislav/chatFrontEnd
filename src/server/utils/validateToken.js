@@ -1,7 +1,7 @@
 import api from 'configApi/apiAuth';
 import { authTokenFormat } from 'default/tokenFormat';
-import { signInSuccess } from 'redux/actions/authenticateActions';
-import { updateHeaders } from 'redux/actions/headersActions';
+import { signInSuccess } from 'redux/actions/entities/authenticateActions';
+import { updateHeaders } from 'redux/actions/entities/headersActions';
 
 export function validateToken (requestHeaders, res, store) {
     return new Promise(async (resolve) => {
