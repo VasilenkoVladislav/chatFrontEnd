@@ -1,5 +1,5 @@
-import Authentications from './authentications/Authentications';
-import Registrations from './authentications/Registrations';
+import Authentications from './Authentications';
+import Registrations from './Registrations';
 
 export default function () {
     return {

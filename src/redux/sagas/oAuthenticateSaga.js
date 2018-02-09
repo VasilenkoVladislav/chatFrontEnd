@@ -16,12 +16,12 @@ function * oAuthSignIn ({payload}) {
 }
 
 function * validateToken ({payload}) {
-    const {data, headers, error } = yield call(api.authentications.validateToken, payload);
+    const {data, headers } = yield call(api.authentications.validateToken, payload);
     if (data && headers) {
         yield call(updateHeadersClient, headers);
         yield put(signInSuccess(data));
         yield put(replace('/'));
-    } else if (error) {
+    } else {
         yield put(signInError());
     }
 }

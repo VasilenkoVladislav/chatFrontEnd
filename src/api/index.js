@@ -1,6 +1,6 @@
 import ApiClient from './ApiClient';
 import Authentications from './Authentications';
-import Registrations from './Registration';
+import Registrations from './Registrations';
 
 export default function ({ apiPrefix } = {}) {
     const api = new ApiClient({ prefix: apiPrefix});
