@@ -3,14 +3,11 @@
 .ch-registration {
   @include formStyle('registration', 500px, 55px);
   .ch-registration-form {
-    .ch-registration-form__footer {
+    .ch-registration-form-footer {
       padding-top: 100px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      .ch-registration-form__footer-content {
-        margin-bottom: 15px;
-      }
     }
   }
 }

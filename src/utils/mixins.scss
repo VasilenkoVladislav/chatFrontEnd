@@ -8,20 +8,20 @@
     padding: $padding-form;
     overflow: hidden;
     box-sizing: border-box;
-    &__header {
+    &-header {
       font-size: 40px;
       line-height: 1.2;
       text-align: center;
       padding-bottom: 50px;
       font-family: Poppins-Bold;
     }
-    &__input-wrap {
+    &-input-wrap {
       width: 100%;
       position: relative;
       margin-bottom: 20px;
       border-bottom: 2px solid #d9d9d9;
     }
-    &__icon {
+    &-icon {
       position: absolute;
       bottom: 0;
       left: 0;
@@ -33,10 +33,10 @@
       padding-left: 5px;
       color: gray;
     }
-    &__label {
+    &-label {
       line-height: 1.5;
     }
-    &__input {
+    &-input {
       font-family: Poppins-Medium;
       font-size: 16px;
       color: #333333;
@@ -49,11 +49,11 @@
       outline: none;
       border: none;
     }
-    &__forgot-pass-wrap {
+    &-forgot-pass-wrap {
       text-align: right;
       padding: 0 20px 40px 20px;
     }
-    &__link {
+    &-link {
       text-decoration: none;
       color: #666666;
       margin: 0px;
@@ -66,7 +66,7 @@
         color: $color-hover;
       }
     }
-    &__button-wrap {
+    &-button-wrap {
       width: 100%;
       display: block;
       position: relative;
@@ -80,7 +80,7 @@
       -o-box-shadow: 0 5px 30px 0px rgba(3, 216, 222, 0.2);
       -ms-box-shadow: 0 5px 30px 0px rgba(3, 216, 222, 0.2);
     }
-    &__button-background {
+    &-button-background {
       position: absolute;
       z-index: -1;
       width: 300%;
@@ -97,10 +97,10 @@
       -moz-transition: all 0.8s;
       transition: all 0.8s;
     }
-    &__button-wrap:hover .ch-#{$element}-form__button-background {
+    &-button-wrap:hover .ch-#{$element}-form-button-background {
         left: 0;
     }
-    &__button {
+    &-button {
       font-family: Poppins-Medium;
       cursor: pointer;
       font-size: 16px;
@@ -120,7 +120,7 @@
       border: none;
       background: transparent;
     }
-    &__text-content {
+    &-text-content {
       color: #666666;
     }
   }

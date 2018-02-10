@@ -6,5 +6,8 @@
   "setupFiles": ["raf/polyfill"],
   "setupTestFrameworkScriptFile": "<rootDir>/__tests__/setup.js",
   "testRegex": "/__tests__/.*.test.js$",
-  "testPathIgnorePatterns": ["<rootDir>/__tests__/coverage"]
+  "testPathIgnorePatterns": ["<rootDir>/__tests__/coverage"],
+  "coveragePathIgnorePatterns": ["<rootDir>/__tests__", "<rootDir>/__mocks__",
+    "<rootDir>/src/default", "<rootDir>/src/constans", "<rootDir>/src/api",
+    "<rootDir>/src/configApi"]
 }

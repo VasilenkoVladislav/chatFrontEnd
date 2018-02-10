@@ -4,19 +4,19 @@ import { VALIDATE_TOKEN_REQUEST, OAUTHENTICATE_REQUEST } from 'redux/constansAct
 import api from 'configApi/apiAuth';
 import { delay } from 'redux-saga';
 import { oAuthTokenFormat } from 'default/tokenFormat';
-import { openPopupOAuthSignIn} from 'redux/utils/popup';
+import { openPopupOAuthSignIn } from 'redux/utils/popup';
 import queryString from 'query-string';
 import { replace } from 'react-router-redux';
 import { updateHeadersClient } from 'redux/sagas/headersSaga';
 import { validateTokenRequest } from 'redux/actions/entities/oAuthenticateActions';
 
-function * oAuthSignIn ({payload}) {
+export function * oAuthSignIn ({payload}) {
     const popup = openPopupOAuthSignIn(payload);
     yield call(listenForCredentials, popup, payload);
 }
 
-function * validateToken ({payload}) {
-    const {data, headers } = yield call(api.authentications.validateToken, payload);
+export function * validateToken ({payload}) {
+    const { data, headers } = yield call(api.authentications.validateToken, payload);
     if (data && headers) {
         yield call(updateHeadersClient, headers);
         yield put(signInSuccess(data));
@@ -26,7 +26,7 @@ function * validateToken ({payload}) {
     }
 }
 
-function * listenForCredentials (popup, payload) {
+export function * listenForCredentials (popup, payload) {
     const params = getAllParams(popup.location);
     if (params) {
         const validCredentials = oAuthTokenFormat(params);
@@ -35,7 +35,7 @@ function * listenForCredentials (popup, payload) {
     } else if (popup.closed) {
         yield put(signInError());
     } else {
-        yield delay(20);
+        yield call(delay, 20);
         yield call(listenForCredentials, popup, payload);
     }
 }
@@ -50,15 +50,15 @@ export function getAllParams (location) {
     }
 }
 
-function * watchOAuthRequest () {
+export function * watchOAuthSignIn () {
     yield takeEvery(OAUTHENTICATE_REQUEST, oAuthSignIn);
 }
 
-function * watchValidateToken () {
+export function * watchValidateToken () {
     yield takeEvery(VALIDATE_TOKEN_REQUEST, validateToken);
 }
 
 export const oAuthSagas = [
-    watchOAuthRequest(),
+    watchOAuthSignIn(),
     watchValidateToken()
 ];

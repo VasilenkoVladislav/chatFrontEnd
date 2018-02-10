@@ -6,7 +6,7 @@ import { replace } from 'react-router-redux';
 import { signInSuccess } from 'redux/actions/entities/authenticateActions';
 import { updateHeadersClient } from 'redux/sagas/headersSaga';
 
-function * registration ({payload}) {
+export function * registration ({payload}) {
     const { data, headers } = yield call(api.registrations.registration, payload);
     if (data && headers) {
         yield put(registrationSuccess());
@@ -18,7 +18,7 @@ function * registration ({payload}) {
     }
 }
 
-function * watchRegistration () {
+export function * watchRegistration () {
     yield takeLatest(REGISTRATION_REQUEST, registration);
 }
 

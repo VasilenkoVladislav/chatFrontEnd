@@ -3,15 +3,15 @@
 .ch-login {
   @include formStyle('login', 500px, 55px);
   .ch-login-form {
-    .ch-login-form__text-wrap {
+    .ch-login-form-text-wrap {
       padding: 50px 50px 25px 50px;
       text-align: center;
     }
-    .ch-login-form__social-wrap {
+    .ch-login-form-social-wrap {
       display: flex;
       justify-content: center;
       align-items: center;
-      .ch-login-form__social-link {
+      .ch-login-form-social-link {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -27,24 +27,21 @@
           background-color: #333333;
         }
       }
-      .ch-login-form__social-link_facebook {
+      .facebook {
         background-color: #3b5998;
       }
-      .ch-login-form__social-link_twitter {
+      .twitter {
         background-color: #1da1f2;
       }
-      .ch-login-form__social-link_google {
+      .google {
         background-color: #ea4335;
       }
     }
-    .ch-login-form__footer {
+    .ch-login-form-footer {
       padding-top: 100px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      .ch-login-form__footer-content {
-        margin-bottom: 15px;
-      }
     }
   }
 }

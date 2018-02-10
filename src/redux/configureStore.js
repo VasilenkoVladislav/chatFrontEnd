@@ -10,7 +10,7 @@ export default function (initialState = {}, sagaMiddleware) {
     } else if (process.env.NODE_ENV === 'development') {
         return createStore(rootReducer, initialState, composeWithDevTools(applyMiddleware(sagaMiddleware, routerMiddleware(browserHistory))));
     } else if (process.env.NODE_ENV === 'test') {
-        return createStore(rootReducer, initialState, applyMiddleware(sagaMiddleware, routerMiddleware(browserHistory)));
+        return createStore(rootReducer, initialState, applyMiddleware(routerMiddleware(browserHistory)));
     } else {
         return createStore(rootReducer, initialState, composeWithDevTools(applyMiddleware(sagaMiddleware, routerMiddleware(browserHistory))));
     }

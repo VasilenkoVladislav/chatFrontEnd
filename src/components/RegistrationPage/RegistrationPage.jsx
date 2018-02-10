@@ -76,62 +76,62 @@ class RegistrationPage extends Component {
         return (
             <div className="ch-registration">
                 <form className="ch-registration-form">
-                    <header className="ch-registration-form__header">Registration</header>
-                    <div className="ch-registration-from__container">
-                        <div className="ch-registration-form__input-wrap">
-                            <span className="ch-registration-form__label">Email</span>
-                            <i className="ch-registration-form__icon fas fa-envelope"/>
+                    <header className="ch-registration-form-header">Registration</header>
+                    <div className="ch-registration-from-container">
+                        <div className="ch-registration-form-input-wrap">
+                            <span className="ch-registration-form-label">Email</span>
+                            <i className="ch-registration-form-icon fas fa-envelope"/>
                             <input type="email"
-                                className="ch-registration-form__input"
+                                className="ch-registration-form-input"
                                 placeholder="Type your email"
                                 name="email"
                                 maxLength={30}
                                 value={this.state.email}
                                 onChange={this.handleChangeInput}/>
                         </div>
-                        <div className="ch-registration-form__input-wrap">
-                            <span className="ch-registration-form__label">Username</span>
-                            <i className="ch-registration-form__icon fas fa-user"/>
+                        <div className="ch-registration-form-input-wrap">
+                            <span className="ch-registration-form-label">Username</span>
+                            <i className="ch-registration-form-icon fas fa-user"/>
                             <input type="text"
-                                className="ch-registration-form__input"
+                                className="ch-registration-form-input"
                                 placeholder="Type your username"
                                 name="userName"
                                 maxLength={30}
                                 value={this.state.userName}
                                 onChange={this.handleChangeInput}/>
                         </div>
-                        <div className="ch-registration-form__input-wrap">
-                            <span className="ch-registration-form__label">Password</span>
-                            <i className="ch-registration-form__icon fas fa-lock"/>
+                        <div className="ch-registration-form-input-wrap">
+                            <span className="ch-registration-form-label">Password</span>
+                            <i className="ch-registration-form-icon fas fa-lock"/>
                             <input type="password"
-                                className="ch-registration-form__input"
+                                className="ch-registration-form-input"
                                 placeholder="Type your password"
                                 name="password"
                                 maxLength={30}
                                 value={this.state.password}
                                 onChange={this.handleChangeInput}/>
                         </div>
-                        <div className="ch-registration-form__input-wrap">
-                            <span className="ch-registration-form__label">Confirm password</span>
-                            <i className="ch-registration-form__icon fas fa-key"/>
+                        <div className="ch-registration-form-input-wrap">
+                            <span className="ch-registration-form-label">Confirm password</span>
+                            <i className="ch-registration-form-icon fas fa-key"/>
                             <input type="password"
-                                className="ch-registration-form__input"
+                                className="ch-registration-form-input"
                                 placeholder="Type your confirm password"
                                 name="confirmPassword"
                                 maxLength={30}
                                 value={this.state.confirmPassword}
                                 onChange={this.handleChangeInput}/>
                         </div>
-                        <div className="ch-registration-form__button-wrap">
-                            <div className="ch-registration-form__button-background"/>
-                            <button className="ch-registration-form__button"
+                        <div className="ch-registration-form-button-wrap">
+                            <div className="ch-registration-form-button-background"/>
+                            <button className="ch-registration-form-button"
                                 disabled={this.props.isLoading}
                                 onClick={this.registrationOnClick}>registration</button>
                         </div>
                     </div>
-                    <footer className="ch-registration-form__footer">
-                        <span className="ch-registration-form__text-content ch-registration-form__footer-content">Or Sign In Using</span>
-                        <Link to="/sign_in" className="ch-registration-form__link">SIGN IN</Link>
+                    <footer className="ch-registration-form-footer">
+                        <span className="ch-registration-form-text-content ch-margin-bottom-big">Or Sign In Using</span>
+                        <Link to="/sign_in" className="ch-registration-form-link">SIGN IN</Link>
                     </footer>
                 </form>
             </div>

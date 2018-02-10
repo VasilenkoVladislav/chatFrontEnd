@@ -59,55 +59,55 @@ class SignInPage extends Component {
         return (
             <div className="ch-login">
                 <form className="ch-login-form">
-                    <header className="ch-login-form__header">Login</header>
-                    <div className="ch-login-from__container">
-                        <div className="ch-login-form__input-wrap">
-                            <span className="ch-login-form__label">Email</span>
-                            <i className="ch-login-form__icon fas fa-envelope"/>
+                    <header className="ch-login-form-header">Login</header>
+                    <div className="ch-login-from-container">
+                        <div className="ch-login-form-input-wrap">
+                            <span className="ch-login-form-label">Email</span>
+                            <i className="ch-login-form-icon fas fa-envelope"/>
                             <input type="email"
-                                className="ch-login-form__input"
+                                className="ch-login-form-input"
                                 placeholder="Type your email"
                                 name="email"
                                 maxLength={30}
                                 value={this.state.email}
                                 onChange={this.handleChangeInput}/>
                         </div>
-                        <div className="ch-login-form__input-wrap">
-                            <span className="ch-login-form__label">Password</span>
-                            <i className="ch-login-form__icon fas fa-lock"/>
+                        <div className="ch-login-form-input-wrap">
+                            <span className="ch-login-form-label">Password</span>
+                            <i className="ch-login-form-icon fas fa-lock"/>
                             <input type="password"
-                                className="ch-login-form__input"
+                                className="ch-login-form-input"
                                 placeholder="Type your password"
                                 name="password"
                                 maxLength={30}
                                 value={this.state.password}
                                 onChange={this.handleChangeInput}/>
                         </div>
-                        <div className="ch-login-form__forgot-pass-wrap">
-                            <Link className="ch-login-form__link">Forgot password?</Link>
+                        <div className="ch-login-form-forgot-pass-wrap">
+                            <Link className="ch-login-form-link">Forgot password?</Link>
                         </div>
-                        <div className="ch-login-form__button-wrap">
-                            <div className="ch-login-form__button-background"/>
-                            <button className="ch-login-form__button" disabled={this.props.isLoading} onClick={this.signInOnClick}>Login</button>
+                        <div className="ch-login-form-button-wrap">
+                            <div className="ch-login-form-button-background"/>
+                            <button className="ch-login-form-button" disabled={this.props.isLoading} onClick={this.signInOnClick}>Login</button>
                         </div>
-                        <div className="ch-login-form__text-wrap">
-                            <span className="ch-login-form__text-content">Or Sign Up Using</span>
+                        <div className="ch-login-form-text-wrap">
+                            <span className="ch-login-form-text-content">Or Sign Up Using</span>
                         </div>
-                        <div className="ch-login-form__social-wrap">
-                            <a className="ch-login-form__social-link ch-login-form__social-link_facebook" onClick={this.oAuthSignInOnClick.bind(this, 'facebook')}>
+                        <div className="ch-login-form-social-wrap">
+                            <a className="ch-login-form-social-link facebook" onClick={this.oAuthSignInOnClick.bind(this, 'facebook')}>
                                 <i className="fab fa-facebook-f"/>
                             </a>
-                            <a className="ch-login-form__social-link ch-login-form__social-link_twitter" onClick={this.oAuthSignInOnClick.bind(this, 'twitter')}>
+                            <a className="ch-login-form-social-link twitter" onClick={this.oAuthSignInOnClick.bind(this, 'twitter')}>
                                 <i className="fab fa-twitter"/>
                             </a>
-                            <a className="ch-login-form__social-link ch-login-form__social-link_google" onClick={this.oAuthSignInOnClick.bind(this, 'google')}>
+                            <a className="ch-login-form-social-link google" onClick={this.oAuthSignInOnClick.bind(this, 'google')}>
                                 <i className="fab fa-google"/>
                             </a>
                         </div>
                     </div>
-                    <footer className="ch-login-form__footer">
-                        <span className="ch-login-form__text-content ch-login-form__footer-content">Or Sign Up Using</span>
-                        <Link to="/registration" className="ch-login-form__link">SIGN UP</Link>
+                    <footer className="ch-login-form-footer">
+                        <span className="ch-login-form-text-content ch-margin-bottom-big">Or Sign Up Using</span>
+                        <Link to="/registration" className="ch-login-form-link">SIGN UP</Link>
                     </footer>
                 </form>
             </div>

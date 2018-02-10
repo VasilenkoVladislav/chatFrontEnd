@@ -3,6 +3,7 @@ import * as sagas from 'redux/sagas/authenticateSaga';
 import { call, put, takeLatest, select } from 'redux-saga/effects';
 import { signInSuccess, signInError, signOutSuccess, signOutError } from 'redux/actions/entities/authenticateActions';
 import api from 'configApi/apiAuth';
+import { cloneableGenerator } from 'redux-saga/utils';
 import { getHeadersState } from 'redux/selectors/entities/headersSelectors';
 import { headers } from 'data/headersData';
 import { replace } from 'react-router-redux';
@@ -24,77 +25,58 @@ describe('authenticateSaga', () => {
             expect(actualValue).toEqual(expectedValue);
         });
     });
-    describe('signIn Saga test (success)', () => {
+    describe('signIn Saga test', () => {
         const data = {
             email: 'v@v.com',
             password: 'aa123456'
         };
         const action = { type: constansActions.SIGN_IN_REQUEST, payload: data };
-        const generator = sagas.signIn(action);
+        const generator = cloneableGenerator(sagas.signIn)(action);
+        let clone = null;
         it('must call api.authentications.signIn', () => {
             const actualValue = generator.next().value;
+            clone = generator.clone();
             expect(actualValue).toEqual(call(api.authentications.signIn, user.info.email, 'aa123456'));
         });
-        it('must call updateHeadersClient', () => {
+        it('must call updateHeadersClient if request to API return success', () => {
             const actualValue = generator.next({data: user.info, headers}).value;
             expect(actualValue).toEqual(call(updateHeadersClient, headers));
         });
-        it('must call signInSuccess', () => {
+        it('must call signInSuccess if request to API return success', () => {
             const actualValue = generator.next().value;
             expect(actualValue).toEqual(put(signInSuccess(user.info)));
         });
-        it('must call replace to /', () => {
+        it('must call replace to / if request to API return success', () => {
             const actualValue = generator.next().value;
             expect(actualValue).toEqual(put(replace('/')));
         });
-    });
-    describe('signIn Saga test (error)', () => {
-        const data = {
-            email: 'email',
-            password: 'password'
-        };
-        const action = { type: constansActions.SIGN_IN_REQUEST, payload: data };
-        const generator = sagas.signIn(action);
-        it('must call api.authentications.signIn', () => {
-            const actualValue = generator.next().value;
-            expect(actualValue).toEqual(call(api.authentications.signIn, 'email', 'password'));
-        });
-        it('must call signInError', () => {
-            const actualValue = generator.next({error: 'Error'}).value;
+        it('must call signInError if request to API return error', () => {
+            const actualValue = clone.next({error: 'Error'}).value;
             expect(actualValue).toEqual(put(signInError()));
         });
     });
-    describe('signOut Saga test (success)', () => {
-        const generator = sagas.signOut();
+    describe('signOut Saga test', () => {
+        const generator = cloneableGenerator(sagas.signOut)();
+        let clone = null;
         it('must call select getHeadersState', () => {
             const actualValue = generator.next().value;
             expect(actualValue).toEqual(select(getHeadersState));
         });
         it('must call api.authentications.signOut', () => {
             const actualValue = generator.next(headers).value;
+            clone = generator.clone();
             expect(actualValue).toEqual(call(api.authentications.signOut, headers));
         });
-        it('must call api.authentications.signOut', () => {
+        it('must call api.authentications.signOut if request to API return success', () => {
             const actualValue = generator.next({}).value;
             expect(actualValue).toEqual(put(signOutSuccess()));
         });
-        it('must call replace to /sign_in', () => {
+        it('must call replace to /sign_in if request to API return success', () => {
             const expectedValue = generator.next({}).value;
             expect(expectedValue).toEqual(put(replace('/sign_in')));
         });
-    });
-    describe('signOut Saga test (error)', () => {
-        const generator = sagas.signOut();
-        it('must call select getHeadersState', () => {
-            const actualValue = generator.next().value;
-            expect(actualValue).toEqual(select(getHeadersState));
-        });
-        it('must call api.authentications.signOut', () => {
-            const actualValue = generator.next({}).value;
-            expect(actualValue).toEqual(call(api.authentications.signOut, {}));
-        });
-        it('must call signOutError', () => {
-            const actualValue = generator.next({error: 'Error'}).value;
+        it('must call signOutError if request to API return error', () => {
+            const actualValue = clone.next({error: 'Error'}).value;
             expect(actualValue).toEqual(put(signOutError()));
         });
     });

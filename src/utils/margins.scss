@@ -1,0 +1,28 @@
+@import "variables";
+
+@mixin marginStyle ($position, $size) {
+  .ch-margin-#{$position}-#{$size} {
+    @if $size == 'small' {
+      margin-#{$position}: $margin-small;
+    } @else if $size == 'medium' {
+      margin-#{$position}: $margin-medium;
+    } @else if $size == 'big' {
+      margin-#{$position}: $margin-big;
+    }
+  }
+}
+
+@include marginStyle('top', 'small');
+@include marginStyle('right', 'small');
+@include marginStyle('bottom', 'small');
+@include marginStyle('left', 'small');
+
+@include marginStyle('top', 'medium');
+@include marginStyle('right', 'medium');
+@include marginStyle('bottom', 'medium');
+@include marginStyle('left', 'medium');
+
+@include marginStyle('top', 'big');
+@include marginStyle('right', 'big');
+@include marginStyle('bottom', 'big');
+@include marginStyle('left', 'big');
