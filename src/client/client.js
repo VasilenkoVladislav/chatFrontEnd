@@ -4,6 +4,7 @@ import createSagaMiddleware from 'redux-saga';
 import { Provider } from 'react-redux';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { resetInitialState } from './utils';
 import rootSaga from 'redux/sagas';
 import routes from 'routes';
 import { syncHistoryWithStore } from 'react-router-redux';
@@ -12,6 +13,7 @@ const initialState = window.REDUX_INITIAL_STATE || {};
 const sagaMiddleware = createSagaMiddleware();
 const store = configureStore(initialState, sagaMiddleware);
 const history = syncHistoryWithStore(browserHistory, store);
+resetInitialState();
 sagaMiddleware.run(rootSaga);
 
 const component = (
