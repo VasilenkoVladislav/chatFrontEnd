@@ -36,7 +36,7 @@ describe('authenticateSaga', () => {
         it('must call api.authentications.signIn', () => {
             const actualValue = generator.next().value;
             clone = generator.clone();
-            expect(actualValue).toEqual(call(api.authentications.signIn, user.info.email, 'aa123456'));
+            expect(actualValue).toEqual(call(api.authentications.signIn, data));
         });
         it('must call updateHeadersClient if request to API return success', () => {
             const actualValue = generator.next({data: user.info, headers}).value;

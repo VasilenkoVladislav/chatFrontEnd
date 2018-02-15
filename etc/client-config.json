@@ -11,12 +11,22 @@
 
   "versionApi": "api/v1/",
 
-  "authentication":{
+  "authentication": {
     "authScope": "auth/",
     "signIn": "auth/sign_in/",
     "signOut": "auth/sign_out/",
     "validateToken": "auth/validate_token/",
     "registration": "auth/"
+  },
+
+  "conversations": {
+    "conversations": "/conversations/"
+  },
+
+  "messages": {
+    "messages": "/messages/"
   }
+
+
 }
 

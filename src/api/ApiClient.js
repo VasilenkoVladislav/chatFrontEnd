@@ -4,11 +4,10 @@ export default class ApiClient {
     constructor ({prefix = 'localhost:3000/api/v1'} = {}) {
         this.prefix = prefix;
     }
-    get (requestUrl, payload = {}, params, headers) {
+    get (requestUrl, params, headers) {
         return this.request({
             url: `${this.prefix}${requestUrl}`,
             method: 'get',
-            data: payload,
             params,
             headers
         });

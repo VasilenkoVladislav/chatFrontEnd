@@ -7,8 +7,7 @@ import { replace } from 'react-router-redux';
 import { updateHeadersClient } from 'redux/sagas/headersSaga';
 
 export function * signIn ({payload}) {
-    const { email, password } = payload;
-    const { data, headers } = yield call(api.authentications.signIn, email, password);
+    const { data, headers } = yield call(api.authentications.signIn, payload);
     if (data && headers) {
         yield call(updateHeadersClient, headers);
         yield put(signInSuccess(data));
@@ -19,8 +18,8 @@ export function * signIn ({payload}) {
 }
 
 export function * signOut () {
-    const headers = yield select(getHeadersState);
-    const { error } = yield call(api.authentications.signOut, headers);
+    const headersForRequest = yield select(getHeadersState);
+    const { error } = yield call(api.authentications.signOut, headersForRequest);
     if (!error) {
         yield put(signOutSuccess());
         yield put(replace('/sign_in'));
