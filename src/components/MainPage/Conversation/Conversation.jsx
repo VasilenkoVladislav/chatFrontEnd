@@ -1,10 +1,17 @@
 import './Conversation.scss';
+import PropTypes from 'prop-types';
 import React from 'react';
 
-const Conversation = () => {
+const propTypes = {
+    conversation: PropTypes.object.isRequired
+};
+
+const Conversation = ({conversation}) => {
     return (
-        <div>Conversation</div>
+        <div>{conversation.id}</div>
     );
 };
+
+Conversation.propTypes = propTypes;
 
 export default Conversation;
