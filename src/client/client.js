@@ -1,6 +1,7 @@
 import { browserHistory, Router } from 'react-router';
 import configureStore from 'redux/configureStore';
 import createSagaMiddleware from 'redux-saga';
+import { currentTime } from 'helpers/currentTime';
 import { Provider } from 'react-redux';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -9,6 +10,7 @@ import rootSaga from 'redux/sagas';
 import routes from 'routes';
 import { syncHistoryWithStore } from 'react-router-redux';
 
+currentTime.startCountdown();
 const initialState = window.REDUX_INITIAL_STATE || {};
 const sagaMiddleware = createSagaMiddleware();
 const store = configureStore(initialState, sagaMiddleware);

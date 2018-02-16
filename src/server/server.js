@@ -22,6 +22,7 @@ app.use(async (req, res) => {
     if (headers) {
         await validateToken(headers, res, store);
     }
+    res.cookie('serverTime', Date.now(), { maxAge: (Date.now() / 1000) + 31 * 24 * 3600 });
     match({routes: routes(store), location: req.url}, (error, redirectLocation, renderProps) => {
         if (redirectLocation) {
             return res.redirect(301, redirectLocation.pathname + redirectLocation.search);

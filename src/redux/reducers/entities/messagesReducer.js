@@ -19,8 +19,8 @@ export default function (state = initialState, action) {
         return { ...state, isLoading: true };
     case GET_MESSAGES_SUCCESS:
         return { ...state,
-            entities: action.payload.data,
-            allIds: _.map(action.payload.data, 'id'),
+            entities: {...state.entities, ...action.payload.data },
+            allIds: [...state.allIds, ..._.map(action.payload.data, 'id')],
             isLoading: false
         };
     case GET_MESSAGES_ERROR:
@@ -30,7 +30,7 @@ export default function (state = initialState, action) {
             entities: {...state.entities,
                 [action.payload.data.id]: action.payload.data
             },
-            allIds: [action.payload.data.id, ...state.allIds]
+            allIds: [...state.allIds, action.payload.data.id]
         };
     case UPDATE_MESSAGE_SUCCESS:
         return { ...state,

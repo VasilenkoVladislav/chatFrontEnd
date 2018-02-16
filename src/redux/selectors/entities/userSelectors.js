@@ -1,19 +1,19 @@
 import { createSelector } from 'reselect';
 // selector
-const getUserState = (state) => state.entities.user;
+const getUser = (state) => state.entities.user;
 // reselect function
 
 export const getCurrentUserInfoState = createSelector(
-    [getUserState],
+    [getUser],
     (user) => user.info
 );
 
 export const getUserIsSignInState = createSelector(
-    [ getUserState ],
+    [ getUser ],
     (user) => user.isSignIn
 );
 
 export const getUserIsLoadingState = createSelector(
-    [ getUserState ],
+    [ getUser ],
     (user) => user.isLoading
 );

@@ -35,7 +35,7 @@ export default class ApiClient {
             headers
         });
     }
-    request ({url, method, params = {}, data, headers = {}}) {
+    request ({url, method, params, data, headers = {}}) {
         return axios({method, url, params, data, headers})
             .then(response => {
                 if (response.status >= 200 && response.status < 300) {

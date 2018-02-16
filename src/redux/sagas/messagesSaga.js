@@ -20,7 +20,7 @@ export function * getMessages ({payload}) {
     const { data, headers } = yield call(api.messages.getMessages, payload, headersForRequest);
     if (data && headers) {
         yield call(updateHeadersClient, headers);
-        yield put(getMessagesSuccess(data.messages));
+        yield put(getMessagesSuccess(payload, data.messages));
     } else {
         yield put(getMessagesError());
     }

@@ -1,12 +1,14 @@
 import './Conversations.scss';
 import React, { Component } from 'react';
-import _ from 'lodash';
 import Conversation from 'components/MainPage/Conversation';
 import PropTypes from 'prop-types';
 
 const propTypes = {
-    conversations: PropTypes.object.isRequired,
-    getConversations: PropTypes.func.isRequired
+    conversationIdShow: PropTypes.string.isRequired,
+    conversations: PropTypes.array.isRequired,
+    closeConversation: PropTypes.func.isRequired,
+    getConversations: PropTypes.func.isRequired,
+    showConversation: PropTypes.func.isRequired
 };
 
 class Conversations extends Component {
@@ -17,15 +19,19 @@ class Conversations extends Component {
         this.props.getConversations();
     }
     render () {
-        const { conversations } = this.props;
+        const { conversationIdShow, conversations, showConversation, closeConversation } = this.props;
         return (
-            <div>
-                {_.map(conversations, conversation =>
+            <React.Fragment>
+                {conversations.map(conversation =>
                     <div key={conversation.id}>
-                        <Conversation conversation={conversation}/>
+                        <Conversation
+                            conversation={conversation}
+                            conversationIdShow={conversationIdShow}
+                            showConversation={showConversation}
+                            closeConversation={closeConversation}/>
                     </div>
                 )}
-            </div>
+            </React.Fragment>
         );
     }
 }

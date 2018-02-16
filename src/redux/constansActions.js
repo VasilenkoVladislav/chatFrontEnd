@@ -1,9 +1,9 @@
-// registration
+// registration entities
 export const REGISTRATION_REQUEST = 'REGISTRATION_REQUEST';
 export const REGISTRATION_SUCCESS = 'REGISTRATION_SUCCESS';
 export const REGISTRATION_ERROR = 'REGISTRATION_ERROR';
 
-// authenticate
+// authenticate entities
 export const SIGN_IN_REQUEST = 'SIGN_IN_REQUEST';
 export const SIGN_IN_SUCCESS = 'SIGN_IN_SUCCESS';
 export const SIGN_IN_ERROR = 'SIGN_IN_ERROR';
@@ -11,17 +11,17 @@ export const SIGN_OUT_REQUEST = 'SIGN_OUT_REQUEST';
 export const SIGN_OUT_SUCCESS = 'SIGN_OUT_SUCCESS';
 export const SIGN_OUT_ERROR = 'SIGN_OUT_ERROR';
 
-// oAuthenticate
+// oAuthenticate entities
 export const OAUTHENTICATE_REQUEST = 'OAUTHENTICATE_REQUEST';
 export const VALIDATE_TOKEN_REQUEST = 'VALIDATE_TOKEN_REQUEST';
 
-// token
+// token entities
 export const UPDATE_HEADERS = 'UPDATE_HEADERS';
 
-// cookie
+// cookie entities
 export const UPDATE_COOKIE = 'UPDATE_COOKIE';
 
-// conversations
+// conversations entities
 export const GET_CONVERSATIONS_REQUEST = 'GET_CONVERSATIONS_REQUEST';
 export const GET_CONVERSATIONS_SUCCESS = 'GET_CONVERSATIONS_SUCCESS';
 export const GET_CONVERSATIONS_ERROR = 'GET_CONVERSATIONS_ERROR';
@@ -38,7 +38,7 @@ export const DELETE_CONVERSATION_REQUEST = 'DELETE_CONVERSATION_REQUEST';
 export const DELETE_CONVERSATION_SUCCESS = 'DELETE_CONVERSATION_SUCCESS';
 export const DELETE_CONVERSATION_ERROR = 'DELETE_CONVERSATION_ERROR';
 
-// messages
+// messages entities
 export const GET_MESSAGES_REQUEST = 'GET_MESSAGES_REQUEST';
 export const GET_MESSAGES_SUCCESS = 'GET_MESSAGES_SUCCESS';
 export const GET_MESSAGES_ERROR = 'GET_MESSAGES_ERROR';
@@ -54,3 +54,7 @@ export const UPDATE_MESSAGE_ERROR = 'UPDATE_MESSAGE_ERROR';
 export const DELETE_MESSAGE_REQUEST = 'DELETE_MESSAGE_REQUEST';
 export const DELETE_MESSAGE_SUCCESS = 'DELETE_MESSAGE_SUCCESS';
 export const DELETE_MESSAGE_ERROR = 'DELETE_MESSAGE_ERROR';
+
+// conversation ui
+export const SHOW_CONVERSATION = 'SHOW_CONVERSATION';
+export const CLOSE_CONVERSATION = 'CLOSE_CONVERSATION';

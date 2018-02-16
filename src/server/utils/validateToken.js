@@ -11,7 +11,7 @@ export function validateToken (requestHeaders, res, store) {
             if (headers['access-token'] && headers['client'] && headers['uid']) {
                 responseHeaders = authTokenFormat(headers);
             }
-            res.cookie('authHeaders', JSON.stringify(responseHeaders), {maxAge: (Date.now() / 1000) + 14 * 24 * 3600});
+            res.cookie('authHeaders', JSON.stringify(responseHeaders), {maxAge: (Date.now() / 1000) + 31 * 24 * 3600});
             store.dispatch(updateHeaders(responseHeaders));
             store.dispatch(signInSuccess(data));
         }

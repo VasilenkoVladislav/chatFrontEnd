@@ -11,8 +11,8 @@ import { GET_MESSAGES_REQUEST,
     DELETE_MESSAGE_SUCCESS,
     DELETE_MESSAGE_ERROR } from 'redux/constansActions';
 
-export function getMessagesRequest () {
-    return { type: GET_MESSAGES_REQUEST };
+export function getMessagesRequest (conversationId) {
+    return { type: GET_MESSAGES_REQUEST, payload: conversationId };
 }
 
 export function getMessagesSuccess (conversationId, data) {

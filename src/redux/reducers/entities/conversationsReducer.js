@@ -22,8 +22,8 @@ export default function (state = initialState, action) {
         return { ...state, isLoading: true };
     case GET_CONVERSATIONS_SUCCESS:
         return { ...state,
-            entities: action.payload,
-            allIds: _.map(action.payload, 'id'),
+            entities: {...state.entities, ...action.payload },
+            allIds: [..._.map(action.payload, 'id'), ...state.allIds],
             isLoading: false
         };
     case GET_CONVERSATIONS_ERROR:
@@ -49,7 +49,7 @@ export default function (state = initialState, action) {
     case GET_MESSAGES_SUCCESS:
         return { ...state,
             entities: { ...state.entities,
-                [state.entities[action.payload.conversationId]]: {
+                [action.payload.conversationId]: {
                     ...state.entities[action.payload.conversationId],
                     messages: _.map(action.payload.data, 'id')
                 }
@@ -58,16 +58,16 @@ export default function (state = initialState, action) {
     case CREATE_MESSAGE_SUCCESS:
         return { ...state,
             entities: { ...state.entities,
-                [state.entities[action.payload.conversationId]]: {
+                [action.payload.conversationId]: {
                     ...state.entities[action.payload.conversationId],
-                    messages: [action.payload.data.id, ...state.entities[action.payload.conversationId].messages]
+                    messages: [...state.entities[action.payload.conversationId].messages, action.payload.data.id]
                 }
             }
         };
     case DELETE_MESSAGE_SUCCESS:
         return { ...state,
             entities: { ...state.entities,
-                [state.entities[action.payload.conversationId]]: {
+                [action.payload.conversationId]: {
                     ...state.entities[action.payload.conversationId],
                     messages: state.entities[action.payload.conversationId].messages.filter(id => id !== action.payload.messageId)
                 }
