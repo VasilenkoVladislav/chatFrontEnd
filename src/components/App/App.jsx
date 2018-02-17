@@ -1,4 +1,5 @@
 import './App.scss';
+import '../../utils/react-select/default.scss';
 import 'normalize.css';
 import React from 'react';
 

@@ -12,14 +12,10 @@ const propTypes = {
 const MainPage = ({conversationIdShow}) => {
     return (
         <div className="ch-main-page-container">
-            <div className="ch-conversations-wrap">
-                <Conversations/>
-            </div>
-            <div className="ch-messages-wrap">
-                {conversationIdShow
-                    ? <Messages conversationId={conversationIdShow}/>
-                    : <Preview/>}
-            </div>
+            <Conversations/>
+            {conversationIdShow
+                ? <Messages conversationId={conversationIdShow}/>
+                : <Preview/>}
         </div>
     );
 };

@@ -26,7 +26,7 @@ class Messages extends Component {
     render () {
         const { messages, createMessage, conversationId } = this.props;
         return (
-            <React.Fragment>
+            <div className="ch-messages-wrap">
                 {messages.map(message =>
                     <div key={message.id}>
                         <Message message={message}/>
@@ -34,7 +34,7 @@ class Messages extends Component {
                 )}
                 <CreateMessage createMessage={createMessage}
                     conversationId={conversationId}/>
-            </React.Fragment>
+            </div>
         );
     }
 }

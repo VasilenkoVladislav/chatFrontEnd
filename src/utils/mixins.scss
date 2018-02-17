@@ -125,3 +125,18 @@
     }
   }
 }
+
+@mixin avatarStyle ($size) {
+  .ch-avatar-#{$size} {
+    @if $size == 'small' {
+      width: $width-small;
+      height: $height-small;
+    } @else if $size == 'medium' {
+      width: $width-medium;
+      height: $height-medium;
+    } @else if $size == 'big' {
+      width: $width-big;
+      height: $height-big;
+    }
+  }
+}

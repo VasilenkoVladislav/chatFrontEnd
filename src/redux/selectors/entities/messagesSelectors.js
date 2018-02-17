@@ -4,8 +4,9 @@ import { getConversationMessagesIdsState } from './conversationsSelectors';
 const getMessages = (state) => state.entities.messages;
 
 // reselect function
-export const getMessagesByConversationIdState = createSelector(
-    getMessages,
-    getConversationMessagesIdsState,
-    (messages, messageIds) => messageIds.map(id => messages.entities[id])
-);
+export const makeGetMessagesByConversationIdState = () =>
+    createSelector(
+        getMessages,
+        getConversationMessagesIdsState,
+        (messages, messageIds) => messageIds.map(id => messages.entities[id])
+    );

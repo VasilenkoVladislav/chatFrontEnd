@@ -15,7 +15,10 @@ const Conversation = ({conversationIdShow, conversation, showConversation}) => {
         }
     };
     return (
-        <div onClick={handleClickShowConversation}>{conversation.name}</div>
+        <div className="ch-conversation-wrap" onClick={handleClickShowConversation}>
+            <span>{conversation.name}
+            </span>
+        </div>
     );
 };
 

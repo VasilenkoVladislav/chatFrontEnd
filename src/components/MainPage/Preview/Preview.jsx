@@ -3,7 +3,7 @@ import React from 'react';
 
 const Preview = () => {
     return (
-        <div>
+        <div className="ch-preview-wrap">
             Preview
         </div>
     );

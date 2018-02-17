@@ -1,6 +1,7 @@
 @import '../.././utils/variables';
 @import "../.././utils/fonts";
 @import "../.././utils/margins";
+@import "../.././utils/mixins";
 
 html, body {
   font-family: $main_font;
@@ -30,6 +31,9 @@ textarea:-ms-input-placeholder { color: $color-placeholder;}
 
 
 .ch {
+  @include avatarStyle('small');
+  @include avatarStyle('medium');
+  @include avatarStyle('big');
   .ch-container {
     width: 100%;
     min-height: 100vh;

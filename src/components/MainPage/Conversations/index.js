@@ -1,3 +1,4 @@
+import { getCurrentUserNameState, getCurrentUserSmallAvatarState } from 'redux/selectors/entities/userSelectors';
 import { showConversation, closeConversation } from 'redux/actions/ui/conversationActions';
 import { connect } from 'react-redux';
 import Conversations from './Conversations';
@@ -8,7 +9,9 @@ import { getConversationsRequest } from 'redux/actions/entities/conversationsAct
 function mapStateToProps (state) {
     return {
         conversationIdShow: getConversationIdShowState(state),
-        conversations: getConversationsEntitiesState(state)
+        conversations: getConversationsEntitiesState(state),
+        currentUserSmallAvatar: getCurrentUserSmallAvatarState(state),
+        currentUserName: getCurrentUserNameState(state)
     };
 }
 

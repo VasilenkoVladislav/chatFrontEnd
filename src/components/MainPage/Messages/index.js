@@ -1,13 +1,16 @@
 import { getMessagesRequest, createMessageRequest } from 'redux/actions/entities/messagesActions';
 import { connect } from 'react-redux';
-import { getMessagesByConversationIdState } from 'redux/selectors/entities/messagesSelectors';
+import { makeGetMessagesByConversationIdState } from 'redux/selectors/entities/messagesSelectors';
 import Messages from './Messages';
 
-function mapStateToProps (state, ownProps) {
-    return {
-        messages: getMessagesByConversationIdState(state, ownProps)
+const makeMapStateToProps = () => {
+    const getMessagesByConversationIdState = makeGetMessagesByConversationIdState();
+    return (state, ownProps) => {
+        return {
+            messages: getMessagesByConversationIdState(state, ownProps)
+        };
     };
-}
+};
 
 function mapDispatchToProps (dispatch, ownProps) {
     return {
@@ -16,4 +19,4 @@ function mapDispatchToProps (dispatch, ownProps) {
     };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Messages);
+export default connect(makeMapStateToProps, mapDispatchToProps)(Messages);

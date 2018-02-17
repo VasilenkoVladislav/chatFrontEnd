@@ -4,16 +4,36 @@ const getUser = (state) => state.entities.user;
 // reselect function
 
 export const getCurrentUserInfoState = createSelector(
-    [getUser],
+    getUser,
     (user) => user.info
 );
 
+export const getCurrentUserNameState = createSelector(
+    getCurrentUserInfoState,
+    (info) => info.name
+);
+
+export const getCurrentUserSmallAvatarState = createSelector(
+    getCurrentUserInfoState,
+    (info) => info.image_small || '/static/images/default-avatar.png'
+);
+
+export const getCurrentUserMediumAvatarState = createSelector(
+    getCurrentUserInfoState,
+    (info) => info.image_medium || '/static/images/default-avatar.png'
+);
+
+export const getCurrentUserBigAvatarState = createSelector(
+    getCurrentUserInfoState,
+    (info) => info.image || '/static/images/default-avatar.png'
+);
+
 export const getUserIsSignInState = createSelector(
-    [ getUser ],
+    getUser,
     (user) => user.isSignIn
 );
 
 export const getUserIsLoadingState = createSelector(
-    [ getUser ],
+    getUser,
     (user) => user.isLoading
 );
