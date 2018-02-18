@@ -28,10 +28,13 @@ class Conversations extends Component {
         return (
             <div className="ch-conversations-wrap">
                 <header className="ch-conversations-header">
-                    <div className="ch-conversations-header-block">
+                    <div className="ch-conversations-header-wrap">
                         <div className="ch-conversations-header-user-info-wrap">
                             <img className="ch-avatar-small" src={this.props.currentUserSmallAvatar}/>
-                            <span className="ch-conversations-header-username">{this.props.currentUserName}</span>
+                            <div className="ch-conversations-header-user-block">
+                                <div className="ch-conversations-header-username">{this.props.currentUserName}</div>
+                                <div className="ch-conversations-header-status">Available</div>
+                            </div>
                         </div>
                         <i className="ch-conversations-header-icon fas fa-ellipsis-h"/>
                     </div>

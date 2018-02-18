@@ -4,22 +4,47 @@
   border-radius: 20px 0 0 20px;
   box-sizing: border-box;
   padding: 25px;
+  overflow-y: auto;
+  overflow-x: hidden;
   .ch-conversations-header {
-    .ch-conversations-header-block {
+    .ch-conversations-header-wrap {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      height: 40px;
       .ch-conversations-header-user-info-wrap {
+        width: 90%;
         display: flex;
+        .ch-conversations-header-user-block {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          margin-left: 10px;
+          width: 80%;
+        }
         .ch-conversations-header-username {
           color: white;
-          margin-left: 10px;
           font-weight: bold;
+          display: inline-block;
+          white-space: nowrap;
+          overflow: hidden;
+          max-width: 100%;
+          text-overflow: ellipsis;
+        }
+        .ch-conversations-header-status {
+          display: inline-block;
+          color: #d0d0d0;
+          font-size: 12px;
+          white-space: nowrap;
+          overflow: hidden;
+          max-width: 100%;
+          text-overflow: ellipsis;
         }
       }
       .ch-conversations-header-icon {
         color: white;
         font-size: 20px;
+        cursor: pointer;
       }
     }
     .ch-items-search-wrap {

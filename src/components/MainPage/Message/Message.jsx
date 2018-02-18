@@ -8,7 +8,7 @@ const propTypes = {
 
 const Message = ({message}) => {
     return (
-        <div>{message.content}</div>
+        <div className="ch-message-wrap">{message.content}</div>
     );
 };
 

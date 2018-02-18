@@ -28,10 +28,13 @@ class CreateMessage extends Component {
     };
     render () {
         return (
-            <Textarea maxLength="8192"
-                value={this.state.value}
-                onChange={this.handleChangeText}
-                onKeyPress={this.handleOnKeyPressText}/>
+            <div className="ch-create-message-wrap">
+                <Textarea maxLength="8192"
+                    className="ch-create-message-text"
+                    value={this.state.value}
+                    onChange={this.handleChangeText}
+                    onKeyPress={this.handleOnKeyPressText}/>
+            </div>
         );
     }
 }

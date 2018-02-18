@@ -1,3 +1,54 @@
 .ch-conversation-wrap {
-
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 40px;
+  .ch-conversation-userinfo-wrap {
+    display: flex;
+    width: 90%;
+    height: 100%;
+    cursor: pointer;
+    .ch-conversation-user-block {
+      margin-left: 10px;
+      width: 80%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      .ch-conversation-username {
+        display: inline-block;
+        color: white;
+        white-space: nowrap;
+        overflow: hidden;
+        max-width: 100%;
+        text-overflow: ellipsis;
+      }
+      .ch-conversation-last-message {
+        display: inline-block;
+        color: #d0d0d0;
+        font-size: 12px;
+        white-space: nowrap;
+        overflow: hidden;
+        max-width: 100%;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+  .ch-conversation-status-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-end;
+    height: 100%;
+    .ch-conversation-status {
+      width: 10px;
+      height: 10px;
+      background: #0cad0c;
+      border-radius: 50%;
+    }
+    .ch-conversation-last-messages-time {
+      color: #d0d0d0;
+      font-size: 12px;
+    }
+  }
 }

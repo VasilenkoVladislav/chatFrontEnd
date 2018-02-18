@@ -5,6 +5,7 @@ import Message from 'components/MainPage/Message';
 import PropTypes from 'prop-types';
 
 const propTypes = {
+    conversation: PropTypes.string.isRequired,
     conversationId: PropTypes.string.isRequired,
     messages: PropTypes.array.isRequired,
     createMessage: PropTypes.func.isRequired,
@@ -24,16 +25,23 @@ class Messages extends Component {
         }
     }
     render () {
-        const { messages, createMessage, conversationId } = this.props;
+        const { messages, createMessage, conversationId, conversation } = this.props;
         return (
             <div className="ch-messages-wrap">
-                {messages.map(message =>
-                    <div key={message.id}>
-                        <Message message={message}/>
-                    </div>
-                )}
-                <CreateMessage createMessage={createMessage}
-                    conversationId={conversationId}/>
+                <header className="ch-messages-header" >
+                    <div>{conversation.user_name}</div>
+                </header>
+                <div className="ch-messages-container">
+                    {messages.map(message =>
+                        <div key={message.id}>
+                            <Message message={message}/>
+                        </div>
+                    )}
+                </div>
+                <footer className="ch-messages-footer">
+                    <CreateMessage createMessage={createMessage}
+                        conversationId={conversationId}/>
+                </footer>
             </div>
         );
     }

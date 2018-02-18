@@ -1,0 +1,29 @@
+@media only screen  and (max-width : 1600px) {
+  .ch-main-page-container {
+    max-width: 1200px !important;
+    .ch-conversation-userinfo-wrap {
+      width: 80% !important;
+    }
+    .ch-conversations-header-user-info-wrap {
+      width: 80% !important;
+    }
+  }
+
+}
+@media only screen  and (max-width : 1300px) {
+  .ch-main-page-container {
+    max-width: 900px !important;
+    .ch-conversation-userinfo-wrap {
+      width: 60% !important;
+    }
+    .ch-conversations-header-user-info-wrap {
+      width: 60% !important;
+    }
+  }
+
+}
+@media only screen  and (max-width : 912px) {
+  .ch-main-page-container {
+    max-width: 735px !important;
+  }
+}
