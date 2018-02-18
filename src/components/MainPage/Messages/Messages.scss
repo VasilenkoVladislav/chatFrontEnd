@@ -2,11 +2,9 @@
   width: 70%;
   background: #e6e8f7;
   border-radius: 0 20px 20px 0;
-  position: relative;
+  display: flex;
+  flex-direction: column;
   .ch-messages-header {
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     background: white;
     border-radius: 0 10px 0 0;
@@ -16,10 +14,8 @@
     height: 100%;
   }
   .ch-messages-footer {
-    position: absolute;
-    bottom: 0;
-    left: 0;
     width: 100%;
-    border-radius: 0 20px 20px 0;
+    background: white;
+    border-radius: 0 0 10px 0;
   }
 }
