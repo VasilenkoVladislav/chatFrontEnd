@@ -1,12 +1,17 @@
+@import "../../.././utils/variables";
+
 .ch-conversations-wrap {
   width: 30%;
-  background: -webkit-linear-gradient(top, #4d52e2, #cf81f1);
+  background: -webkit-linear-gradient(top, $color-blue, $color-purple);
   border-radius: 20px 0 0 20px;
   box-sizing: border-box;
-  padding: 25px;
+  padding: 25px 0;
   overflow-y: auto;
   overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
   .ch-conversations-header {
+    padding: 0 25px;
     .ch-conversations-header-wrap {
       display: flex;
       justify-content: space-between;
@@ -25,14 +30,12 @@
         .ch-conversations-header-username {
           color: white;
           font-weight: bold;
-          display: inline-block;
           white-space: nowrap;
           overflow: hidden;
           max-width: 100%;
           text-overflow: ellipsis;
         }
         .ch-conversations-header-status {
-          display: inline-block;
           color: #d0d0d0;
           font-size: 12px;
           white-space: nowrap;
@@ -40,11 +43,6 @@
           max-width: 100%;
           text-overflow: ellipsis;
         }
-      }
-      .ch-conversations-header-icon {
-        color: white;
-        font-size: 20px;
-        cursor: pointer;
       }
     }
     .ch-items-search-wrap {
@@ -54,6 +52,7 @@
   .ch-conversations-container {
     display: flex;
     flex-direction: column;
+    overflow: auto;
   }
 }
 

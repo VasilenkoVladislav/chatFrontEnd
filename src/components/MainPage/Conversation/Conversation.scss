@@ -1,13 +1,20 @@
 .ch-conversation-wrap {
   display: flex;
   align-items: center;
+  padding: 10px 25px;
   justify-content: space-between;
   height: 40px;
+  cursor: pointer;
+  &:hover {
+    background: #5a5a5a;
+  }
+  &.active {
+    background: #444344;
+  }
   .ch-conversation-userinfo-wrap {
     display: flex;
     width: 90%;
     height: 100%;
-    cursor: pointer;
     .ch-conversation-user-block {
       margin-left: 10px;
       width: 80%;
@@ -16,7 +23,6 @@
       flex-direction: column;
       justify-content: space-around;
       .ch-conversation-username {
-        display: inline-block;
         color: white;
         white-space: nowrap;
         overflow: hidden;
@@ -24,7 +30,6 @@
         text-overflow: ellipsis;
       }
       .ch-conversation-last-message {
-        display: inline-block;
         color: #d0d0d0;
         font-size: 12px;
         white-space: nowrap;

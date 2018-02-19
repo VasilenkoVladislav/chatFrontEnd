@@ -30,10 +30,15 @@ class CreateMessage extends Component {
         return (
             <div className="ch-create-message-wrap">
                 <Textarea maxLength="8192"
+                    placeholder="Type a massage here"
                     className="ch-create-message-text"
                     value={this.state.value}
                     onChange={this.handleChangeText}
                     onKeyPress={this.handleOnKeyPressText}/>
+                <div>
+                    <i className="ch-create-message-icon fas fa-plus-circle ch-margin-right-big"/>
+                    <i className="ch-create-message-icon fas fa-smile"/>
+                </div>
             </div>
         );
     }

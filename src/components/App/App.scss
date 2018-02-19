@@ -28,6 +28,13 @@ textarea:-moz-placeholder { color: $color-placeholder;}
 textarea::-moz-placeholder { color: $color-placeholder;}
 textarea:-ms-input-placeholder { color: $color-placeholder;}
 
+textarea {
+  border: none;
+  background-color: transparent;
+  resize: none;
+  outline: none;
+}
+
 ::-webkit-scrollbar {
   width: 12px;
 }
@@ -63,5 +70,10 @@ textarea:-ms-input-placeholder { color: $color-placeholder;}
     //background: -o-linear-gradient(-135deg, #c850c0, #4158d0);
     //background: -moz-linear-gradient(-135deg, #c850c0, #4158d0);
     //background: linear-gradient(-135deg, #c850c0, #4158d0);
+  }
+  .ch-icon {
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
   }
 }

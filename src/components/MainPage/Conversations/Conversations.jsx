@@ -32,11 +32,11 @@ class Conversations extends Component {
                         <div className="ch-conversations-header-user-info-wrap">
                             <img className="ch-avatar-small" src={this.props.currentUserSmallAvatar}/>
                             <div className="ch-conversations-header-user-block">
-                                <div className="ch-conversations-header-username">{this.props.currentUserName}</div>
-                                <div className="ch-conversations-header-status">Available</div>
+                                <span className="ch-conversations-header-username">{this.props.currentUserName}</span>
+                                <span className="ch-conversations-header-status">Available</span>
                             </div>
                         </div>
-                        <i className="ch-conversations-header-icon fas fa-ellipsis-h"/>
+                        <i className="ch-icon fas fa-ellipsis-h"/>
                     </div>
                     <ItemsSearch
                         onChange={this.onChangeItemsSearch}

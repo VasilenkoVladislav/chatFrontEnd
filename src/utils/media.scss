@@ -8,7 +8,6 @@
       width: 80% !important;
     }
   }
-
 }
 @media only screen  and (max-width : 1300px) {
   .ch-main-page-container {
@@ -19,11 +18,33 @@
     .ch-conversations-header-user-info-wrap {
       width: 60% !important;
     }
+    .ch-messages-wrap {
+      .ch-messages-header {
+        padding: 15px 70px;
+      }
+      .ch-messages-container {
+        padding: 15px 70px;
+      }
+      .ch-messages-footer {
+        padding: 15px 70px;
+      }
+    }
   }
 
 }
 @media only screen  and (max-width : 912px) {
   .ch-main-page-container {
     max-width: 735px !important;
+    .ch-messages-wrap {
+      .ch-messages-header {
+        padding: 15px 50px;
+      }
+      .ch-messages-container {
+        padding: 15px 50px;
+      }
+      .ch-messages-footer {
+        padding: 15px 50px;
+      }
+    }
   }
 }

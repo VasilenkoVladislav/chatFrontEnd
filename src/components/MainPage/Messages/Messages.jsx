@@ -5,7 +5,8 @@ import Message from 'components/MainPage/Message';
 import PropTypes from 'prop-types';
 
 const propTypes = {
-    conversation: PropTypes.string.isRequired,
+    currentUserId: PropTypes.string.isRequired,
+    conversation: PropTypes.object.isRequired,
     conversationId: PropTypes.string.isRequired,
     messages: PropTypes.array.isRequired,
     createMessage: PropTypes.func.isRequired,
@@ -24,19 +25,47 @@ class Messages extends Component {
             this.props.getMessages();
         }
     }
+    renderMessages = () => {
+        const { messages, currentUserId } = this.props;
+        return messages.map((message, index) => {
+            const prevIndex = index - 1;
+            const prevMessageUserId = prevIndex >= 0 ? messages[prevIndex].user_id : '';
+            return <div key={message.id}>
+                <Message message={message} currentUserId={currentUserId} prevMessageUserId={prevMessageUserId}/>
+            </div>;
+        });
+    };
     render () {
-        const { messages, createMessage, conversationId, conversation } = this.props;
+        const { createMessage, conversationId, conversation } = this.props;
         return (
             <div className="ch-messages-wrap">
-                <header className="ch-messages-header" >
-                    <div>{conversation.user_name}</div>
+                <header className="ch-messages-header">
+                    <img className="ch-avatar-small" src={conversation.user_avatar_small || '/static/images/default-avatar.png'}/>
+                    <div className="ch-messages-header-user-info-block">
+                        <div className="ch-messages-header-username">
+                            {conversation.user_name}
+                        </div>
+                        <div className="ch-messages-header-city">
+                            <span>Kiev, </span>
+                            <span>Ukraine 12:00 PM</span>
+                        </div>
+                    </div>
+                    <div className="ch-messages-header-call-block">
+                        <div className="ch-messages-header-icon-wrap ch-margin-right-medium">
+                            <i className="ch-icon fas fa-video"/>
+                        </div>
+                        <div className="ch-messages-header-icon-wrap ch-margin-right-medium">
+                            <i className="ch-icon fas fa-phone"/>
+                        </div>
+                        <div className="ch-messages-header-icon-wrap">
+                            <i className="ch-icon fas fa-ellipsis-h"/>
+                        </div>
+                    </div>
                 </header>
                 <div className="ch-messages-container">
-                    {messages.map(message =>
-                        <div key={message.id}>
-                            <Message message={message}/>
-                        </div>
-                    )}
+                    <div>
+                        {this.renderMessages()}
+                    </div>
                 </div>
                 <footer className="ch-messages-footer">
                     <CreateMessage createMessage={createMessage}

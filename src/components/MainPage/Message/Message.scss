@@ -1,3 +1,39 @@
+@import "../../.././utils/mixins";
+
 .ch-message-wrap {
   margin-bottom: 10px;
+  display: flex;
 }
+.current-user-message {
+  @extend .ch-message-wrap;
+  justify-content: flex-end;
+}
+.conversation-user-message {
+  @extend .ch-message-wrap;
+  justify-content: flex-start;
+  .ch-message-avatar-wrap {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.ch-message-content-wrap {
+  margin-left: 15px;
+  max-width: 40%;
+  word-wrap: break-word;
+  align-self: center;
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+.current-user-message-content {
+  @extend .ch-message-content-wrap;
+  background: -webkit-linear-gradient(top, #d8d8ff, #4d52e2);
+  box-shadow: 5px 5px 15px grey;
+}
+.conversation-user-message-content {
+  @extend .ch-message-content-wrap;
+  background: -webkit-linear-gradient(top, #f6e5ff, #cf81f1);
+  box-shadow: 5px 5px 15px grey;
+}
+

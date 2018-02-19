@@ -1,11 +1,22 @@
+@import "../../.././utils/variables";
+@import "../../.././utils/mixins";
+
 .ch-create-message-wrap {
   width: 100%;
   box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   .ch-create-message-text {
     resize: none;
     width: 80%;
     box-sizing: border-box;
     max-height: 300px;
     border: none;
+    min-height: 30px;
+    padding: 5px;
+  }
+  .ch-create-message-icon {
+    @include icon(25px);
   }
 }

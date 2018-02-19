@@ -1,21 +1,46 @@
+@import "../../.././utils/variables";
+@import "../../.././utils/mixins";
+
 .ch-messages-wrap {
   width: 70%;
-  background: #e6e8f7;
+  background: $color-messages-block;
   border-radius: 0 20px 20px 0;
   display: flex;
   flex-direction: column;
   .ch-messages-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
     background: white;
     border-radius: 0 10px 0 0;
+    padding: 25px 100px;
+    box-sizing: border-box;
+    .ch-messages-header-user-info-block {
+      text-align: center;
+      .ch-messages-header-username {
+        font-weight: bold;
+        font-size: 16px;
+      }
+    }
+    .ch-messages-header-call-block {
+      display: flex;
+      .ch-messages-header-icon-wrap {
+        @include iconWrap(40px, 40px);
+      }
+    }
   }
   .ch-messages-container {
     overflow-y: auto;
     height: 100%;
+    padding: 15px 100px;
+    box-sizing: border-box;
   }
   .ch-messages-footer {
     width: 100%;
     background: white;
     border-radius: 0 0 10px 0;
+    padding: 25px 100px;
+    box-sizing: border-box;
   }
 }

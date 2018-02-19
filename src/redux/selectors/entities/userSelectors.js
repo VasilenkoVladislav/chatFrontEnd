@@ -13,6 +13,11 @@ export const getCurrentUserNameState = createSelector(
     (info) => info.name
 );
 
+export const getCurrentUserIdState = createSelector(
+    getCurrentUserInfoState,
+    (info) => info.id
+);
+
 export const getCurrentUserSmallAvatarState = createSelector(
     getCurrentUserInfoState,
     (info) => info.image_small || '/static/images/default-avatar.png'
