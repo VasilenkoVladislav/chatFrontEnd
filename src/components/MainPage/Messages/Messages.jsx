@@ -30,9 +30,9 @@ class Messages extends Component {
         return messages.map((message, index) => {
             const prevIndex = index - 1;
             const prevMessageUserId = prevIndex >= 0 ? messages[prevIndex].user_id : '';
-            return <div key={message.id}>
+            return <li key={message.id}>
                 <Message message={message} currentUserId={currentUserId} prevMessageUserId={prevMessageUserId}/>
-            </div>;
+            </li>;
         });
     };
     render () {
@@ -63,7 +63,9 @@ class Messages extends Component {
                     </div>
                 </header>
                 <div className="ch-messages-container">
-                    {this.renderMessages()}
+                    <ul className="ch-messages-list-wrap">
+                        {this.renderMessages()}
+                    </ul>
                 </div>
                 <footer className="ch-messages-footer">
                     <CreateMessage createMessage={createMessage}

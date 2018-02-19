@@ -32,10 +32,17 @@
   }
   .ch-messages-container {
     height: 100%;
+    display: flex;
     overflow-y: auto;
     overflow-x: hidden;
     padding: 15px 100px;
     box-sizing: border-box;
+    .ch-messages-list-wrap {
+      margin: auto 0 0 0;
+      padding: 0;
+      list-style-type: none;
+      width: 100%;
+    }
   }
   .ch-messages-footer {
     width: 100%;

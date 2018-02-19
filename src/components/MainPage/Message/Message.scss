@@ -7,13 +7,13 @@
 }
 .current-user-message {
   @extend .ch-message-wrap;
-  @include animation(0s, 1s, slideFromRight);
+  @include animation(0s, 0.7s, slideFromRight);
   animation-name: slideFromRight;
   justify-content: flex-end;
 }
 .conversation-user-message {
   @extend .ch-message-wrap;
-  @include animation(0s, 1s, slideFromLeft);
+  @include animation(0s, 0.7s, slideFromLeft);
   justify-content: flex-start;
   .ch-message-avatar-wrap {
     width: 40px;
@@ -27,7 +27,6 @@
   word-wrap: break-word;
   align-self: center;
   padding: 10px;
-  box-sizing: border-box;
   border-radius: 10px;
 }
 .current-user-message-content {
