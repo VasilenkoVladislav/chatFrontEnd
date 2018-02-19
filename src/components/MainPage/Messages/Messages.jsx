@@ -63,9 +63,7 @@ class Messages extends Component {
                     </div>
                 </header>
                 <div className="ch-messages-container">
-                    <div>
-                        {this.renderMessages()}
-                    </div>
+                    {this.renderMessages()}
                 </div>
                 <footer className="ch-messages-footer">
                     <CreateMessage createMessage={createMessage}

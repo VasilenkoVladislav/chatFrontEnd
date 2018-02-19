@@ -31,8 +31,9 @@
     }
   }
   .ch-messages-container {
-    overflow-y: auto;
     height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
     padding: 15px 100px;
     box-sizing: border-box;
   }
