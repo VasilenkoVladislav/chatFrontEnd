@@ -50,15 +50,17 @@ class Conversations extends Component {
                         getOptions={() => Promise.resolve({})}/>
                 </header>
                 <div className="ch-conversations-container">
-                    {this.props.conversations.map(conversation =>
-                        <div key={conversation.id}>
-                            <Conversation
-                                conversation={conversation}
-                                conversationIdShow={this.props.conversationIdShow}
-                                showConversation={this.props.showConversation}
-                                closeConversation={this.props.closeConversation}/>
-                        </div>
-                    )}
+                    <ul className="ch-conversation-list-wrap">
+                        {this.props.conversations.map(conversation =>
+                            <li key={conversation.id}>
+                                <Conversation
+                                    conversation={conversation}
+                                    conversationIdShow={this.props.conversationIdShow}
+                                    showConversation={this.props.showConversation}
+                                    closeConversation={this.props.closeConversation}/>
+                            </li>
+                        )}
+                    </ul>
                 </div>
             </div>
         );

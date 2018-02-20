@@ -7,22 +7,22 @@
 }
 .current-user-message {
   @extend .ch-message-wrap;
-  @include animation(0s, 0.7s, slideFromRight);
+  @include animation(0s, 1s, slideFromRight);
   animation-name: slideFromRight;
   justify-content: flex-end;
 }
 .conversation-user-message {
   @extend .ch-message-wrap;
-  @include animation(0s, 0.7s, slideFromLeft);
+  @include animation(0s, 1s, slideFromLeft);
   justify-content: flex-start;
   .ch-message-avatar-wrap {
     width: 40px;
     height: 40px;
+    margin-right: 15px;
   }
 }
 
 .ch-message-content-wrap {
-  margin-left: 15px;
   max-width: 40%;
   word-wrap: break-word;
   align-self: center;
@@ -42,22 +42,18 @@
 
 @include keyframe(slideFromLeft) {
   0% {
-    margin-left: -200px;
     opacity: 0;
   }
   100% {
-    margin-left: 0;
     opacity: 1;
   }
 }
 
 @include keyframe(slideFromRight) {
   0% {
-    margin-right: -200px;
     opacity: 0;
   }
   100% {
-    margin-right: 0;
     opacity: 1;
   }
 }

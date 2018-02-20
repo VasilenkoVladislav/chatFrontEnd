@@ -24,7 +24,15 @@ class Messages extends Component {
         if (this.props.conversationId !== prevProps.conversationId && this.props.messages && this.props.messages.length === 0) {
             this.props.getMessages();
         }
+        if (this.props.messages.length !== prevProps.messages.length) {
+            this.scrollBottom();
+        }
     }
+    scrollBottom = () => {
+        if (this.list) {
+            this.list.scrollTop = this.list.offsetHeight;
+        }
+    };
     renderMessages = () => {
         const { messages, currentUserId } = this.props;
         return messages.map((message, index) => {
@@ -63,7 +71,7 @@ class Messages extends Component {
                     </div>
                 </header>
                 <div className="ch-messages-container">
-                    <ul className="ch-messages-list-wrap">
+                    <ul className="ch-messages-list-wrap" ref={ul => this.list = ul}>
                         {this.renderMessages()}
                     </ul>
                 </div>
