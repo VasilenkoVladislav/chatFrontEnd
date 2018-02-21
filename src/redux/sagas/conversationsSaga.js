@@ -14,12 +14,16 @@ import { put, call, takeEvery, select } from 'redux-saga/effects';
 import api from 'configApi/apiResources';
 import { getHeadersState } from 'redux/selectors/entities/headersSelectors';
 import { updateHeadersClient } from 'redux/sagas/headersSaga';
+import { webSocketSingleton } from 'webSocket';
 
 export function * getConversations () {
     const headersForRequest = yield select(getHeadersState);
     const { data, headers } = yield call(api.conversations.getConversations, headersForRequest);
     if (data && headers) {
         yield call(updateHeadersClient, headers);
+        Object.keys(data.conversations).map(key => {
+            webSocketSingleton.getWebSocket().subscribeConversationChannel(key);
+        });
         yield put(getConversationsSuccess(data.conversations));
     } else {
         yield put(getConversationsError());
@@ -31,6 +35,7 @@ export function * createConversation ({payload}) {
     const { data, headers } = yield call(api.conversations.createConversation, payload, headersForRequest);
     if (data && headers) {
         yield call(updateHeadersClient, headers);
+        webSocketSingleton.getWebSocket().subscribeConversationChannel(data.conversation.id);
         yield put(createConversationSuccess(data.conversation));
     } else {
         yield put(createConversationError());

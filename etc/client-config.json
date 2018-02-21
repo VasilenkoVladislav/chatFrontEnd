@@ -1,12 +1,15 @@
 {
   "production": {
-    "apiPrefix": "http://localhost:3000/"
+    "apiPrefix": "http://localhost:3000/",
+    "webSocketUrl": "localhost:8080"
   },
   "development": {
-    "apiPrefix": "http://localhost:3000/"
+    "apiPrefix": "http://localhost:3000/",
+    "webSocketUrl": "localhost:8080"
   },
   "test": {
-    "apiPrefix": "http://localhost:3000/"
+    "apiPrefix": "http://localhost:3000/",
+    "webSocketUrl": "localhost:8080"
   },
 
   "versionApi": "api/v1/",
