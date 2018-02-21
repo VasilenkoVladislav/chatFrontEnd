@@ -9,9 +9,9 @@ export class WebSocketSingleton {
         }
         WebSocketSingleton.instance = this;
     }
-    initializeWebSocket ({dispatch}) {
+    initializeWebSocket ({getState, dispatch}) {
         if (!this.webSocket) {
-            this.webSocket = new WebSocket(dispatch);
+            this.webSocket = new WebSocket(getState, dispatch);
         }
     }
     getWebSocket () {

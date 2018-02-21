@@ -1,12 +1,15 @@
 import config from 'configApi/config';
+import { getHeadersState } from 'redux/selectors/entities/headersSelectors';
 import io from 'socket.io-client';
 
 export default class WebSocket {
-    constructor (dispatch) {
+    constructor (getState, dispatch) {
+        this.getState = getState;
         this.dispatch = dispatch;
         this.wsUrl = config[process.env.NODE_ENV].webSocketUrl;
     }
-    createWebSocketConnection (headers) {
+    createWebSocketConnection () {
+        const headers = getHeadersState(this.getState());
         if (!headers) {
             throw new Error('headers is not defined!');
         }
