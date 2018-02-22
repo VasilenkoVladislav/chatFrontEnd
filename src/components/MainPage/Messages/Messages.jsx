@@ -30,7 +30,7 @@ class Messages extends Component {
     }
     scrollBottom = () => {
         if (this.list) {
-            this.list.scrollTop = this.list.offsetHeight;
+            this.list.scrollTop = this.list.scrollHeight;
         }
     };
     renderMessages = () => {
