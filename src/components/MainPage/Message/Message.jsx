@@ -4,16 +4,28 @@ import React from 'react';
 
 const propTypes = {
     currentUserId: PropTypes.string.isRequired,
-    message: PropTypes.object.isRequired
+    message: PropTypes.object.isRequired,
+    deleteMessage: PropTypes.func.isRequired,
+    showUpdateMessage: PropTypes.func.isRequired
 };
 
-const Message = ({message, currentUserId, prevMessageUserId}) => {
+const Message = ({ message, currentUserId, prevMessageUserId, deleteMessage, showUpdateMessage}) => {
+    const handleClickDeleteMessage = () => {
+        deleteMessage(message.id);
+    };
+    const handleClickUpdateMessage = () => {
+        showUpdateMessage(message.id, message.content);
+    };
     return (
         <React.Fragment>
             {currentUserId === message.user_id
                 ? <div className="ch-message-wrap current-user-message">
                     <div className="ch-message-content-wrap current-user-message-content">
                         {message.content}
+                    </div>
+                    <div className="ch-message-manage-wrap">
+                        <i className="fas fa-times ch-margin-bottom-medium" onClick={handleClickDeleteMessage}/>
+                        <i className="fas fa-pencil-alt" onClick={handleClickUpdateMessage}/>
                     </div>
                 </div>
                 : <div className="ch-message-wrap conversation-user-message">

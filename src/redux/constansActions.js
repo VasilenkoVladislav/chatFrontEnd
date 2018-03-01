@@ -58,3 +58,6 @@ export const DELETE_MESSAGE_ERROR = 'DELETE_MESSAGE_ERROR';
 // conversation ui
 export const SHOW_CONVERSATION = 'SHOW_CONVERSATION';
 export const CLOSE_CONVERSATION = 'CLOSE_CONVERSATION';
+
+// update message ui
+export const SHOW_UPDATE_MESSAGE = 'SHOW_UPDATE_MESSAGE';

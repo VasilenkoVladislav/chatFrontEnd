@@ -1,0 +1,39 @@
+import React, { cloneElement } from 'react';
+import DropDownMenu from './DropDownMenu';
+import DropDownToggle from './DropDownToggle';
+import PropTypes from 'prop-types';
+
+const propTypes = {
+    className: PropTypes.string,
+    children: PropTypes.node.isRequired,
+    isOpen: PropTypes.bool.isRequired,
+    toggle: PropTypes.func.isRequired
+};
+
+const DropDown = ({isOpen, toggle, children, className}) => {
+    const handleBlur = () => {
+        // if (isOpen) {
+        //     toggle();
+        // }
+    };
+    const boundChildren = React.Children.map(children, child => {
+        if (child.type === DropDownToggle) {
+            child = cloneElement(child, { toggle });
+        } else if (child.type === DropDownMenu && !isOpen) {
+            child = null;
+        }
+        return child;
+    });
+    return (
+        <div className={className}
+            onClick={toggle}
+            onBlur={handleBlur}
+            tabIndex='0'>
+            {boundChildren}
+        </div>
+    );
+};
+
+DropDown.propTypes = propTypes;
+
+export default DropDown;

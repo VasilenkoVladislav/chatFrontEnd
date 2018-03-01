@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import CreateMessage from 'components/MainPage/CreateMessage';
 import Message from 'components/MainPage/Message';
 import PropTypes from 'prop-types';
+import UpdateMessage from 'components/MainPage/UpdateMessage';
 
 const propTypes = {
     currentUserId: PropTypes.string.isRequired,
@@ -10,7 +11,15 @@ const propTypes = {
     conversationId: PropTypes.string.isRequired,
     messages: PropTypes.array.isRequired,
     createMessage: PropTypes.func.isRequired,
-    getMessages: PropTypes.func.isRequired
+    getMessages: PropTypes.func.isRequired,
+    deleteMessage: PropTypes.func.isRequired,
+    updateMessage: PropTypes.func.isRequired,
+    updateMessageInfo: PropTypes.shape({
+        isOpen: PropTypes.bool,
+        messageId: PropTypes.string,
+        content: PropTypes.string
+    }).isRequired,
+    showUpdateMessage: PropTypes.func.isRequired
 };
 
 class Messages extends Component {
@@ -34,17 +43,21 @@ class Messages extends Component {
         }
     };
     renderMessages = () => {
-        const { messages, currentUserId } = this.props;
+        const { messages, currentUserId, deleteMessage, showUpdateMessage } = this.props;
         return messages.map((message, index) => {
             const prevIndex = index - 1;
             const prevMessageUserId = prevIndex >= 0 ? messages[prevIndex].user_id : '';
             return <li key={message.id}>
-                <Message message={message} currentUserId={currentUserId} prevMessageUserId={prevMessageUserId}/>
+                <Message message={message}
+                    currentUserId={currentUserId}
+                    prevMessageUserId={prevMessageUserId}
+                    deleteMessage={deleteMessage}
+                    showUpdateMessage={showUpdateMessage}/>
             </li>;
         });
     };
     render () {
-        const { createMessage, conversationId, conversation } = this.props;
+        const { createMessage, updateMessage, conversation, updateMessageInfo } = this.props;
         return (
             <div className="ch-messages-wrap">
                 <header className="ch-messages-header">
@@ -76,8 +89,12 @@ class Messages extends Component {
                     </ul>
                 </div>
                 <footer className="ch-messages-footer">
-                    <CreateMessage createMessage={createMessage}
-                        conversationId={conversationId}/>
+                    {!updateMessageInfo.isOpen
+                        ? <CreateMessage createMessage={createMessage}/>
+                        : <UpdateMessage updateMessage={updateMessage}
+                            updateMessageContent={updateMessageInfo.content}
+                            updateMessageId={updateMessageInfo.messageId}/>
+                    }
                 </footer>
             </div>
         );

@@ -1,16 +1,18 @@
-import './CreateMessage.scss';
+import './UpdateMessage.scss';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Textarea from 'react-textarea-autosize';
 
 const propTypes = {
-    createMessage: PropTypes.func.isRequired
+    updateMessage: PropTypes.func.isRequired,
+    updateMessageId: PropTypes.string.isRequired,
+    updateMessageContent: PropTypes.string.isRequired
 };
 
-class CreateMessage extends Component {
+class UpdateMessage extends Component {
     constructor (props) {
         super(props);
-        this.state = { value: '' };
+        this.state = { value: this.props.updateMessageContent };
     }
     handleChangeText = (event) => {
         this.setState({ value: event.target.value });
@@ -18,7 +20,7 @@ class CreateMessage extends Component {
     handleOnKeyPressText = (event) => {
         if (this.state.value.trim() !== '' && event.charCode === 13 && !event.shiftKey) {
             const data = { content: this.state.value };
-            this.props.createMessage(data);
+            this.props.updateMessage(this.props.updateMessageId, data);
             this.setState({ value: '' });
             event.preventDefault();
         }
@@ -41,6 +43,6 @@ class CreateMessage extends Component {
     }
 }
 
-CreateMessage.propTypes = propTypes;
+UpdateMessage.propTypes = propTypes;
 
-export default CreateMessage;
+export default UpdateMessage;

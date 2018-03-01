@@ -4,12 +4,28 @@
 .ch-message-wrap {
   margin-bottom: 10px;
   display: flex;
+  position: relative;
 }
 .current-user-message {
   @extend .ch-message-wrap;
   @include animation(0s, 1s, slideFromRight);
   animation-name: slideFromRight;
   justify-content: flex-end;
+  &:hover {
+    .ch-message-manage-wrap {
+      visibility: visible;
+    }
+  }
+  .ch-message-manage-wrap {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    visibility: hidden;
+    i {
+      cursor: pointer;
+      color: grey;
+    }
+  }
 }
 .conversation-user-message {
   @extend .ch-message-wrap;

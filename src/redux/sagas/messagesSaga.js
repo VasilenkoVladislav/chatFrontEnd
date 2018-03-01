@@ -53,7 +53,7 @@ export function * deleteMessage ({payload}) {
     const { headers, error } = yield call(api.messages.deleteMessage, payload, headersForRequest);
     if (headers && !error) {
         yield call(updateHeadersClient, headers);
-        yield put(deleteMessageSuccess(payload.conversationId, payload));
+        yield put(deleteMessageSuccess(payload.conversationId, payload.messageId));
     } else {
         yield put(deleteMessageError());
     }
