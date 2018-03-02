@@ -13,13 +13,13 @@ import { getMessagesSuccess,
 import { put, call, takeEvery, select } from 'redux-saga/effects';
 import api from 'configApi/apiResources';
 import { getHeadersState } from 'redux/selectors/entities/headersSelectors';
-import { updateHeadersClient } from 'redux/sagas/headersSaga';
+import { updateHeaders } from 'redux/actions/entities/headersActions';
 
 export function * getMessages ({payload}) {
     const headersForRequest = yield select(getHeadersState);
     const { data, headers } = yield call(api.messages.getMessages, payload, headersForRequest);
     if (data && headers) {
-        yield call(updateHeadersClient, headers);
+        yield put(updateHeaders(headers));
         yield put(getMessagesSuccess(payload, data.messages));
     } else {
         yield put(getMessagesError());
@@ -30,7 +30,7 @@ export function * createMessage ({payload}) {
     const headersForRequest = yield select(getHeadersState);
     const { data, headers } = yield call(api.messages.createMessage, payload, headersForRequest);
     if (data && headers) {
-        yield call(updateHeadersClient, headers);
+        yield put(updateHeaders(headers));
         yield put(createMessageSuccess(payload.conversationId, data.message));
     } else {
         yield put(createMessageError());
@@ -41,7 +41,7 @@ export function * updateMessage ({payload}) {
     const headersForRequest = yield select(getHeadersState);
     const { data, headers } = yield call(api.messages.updateMessage, payload, headersForRequest);
     if (data && headers) {
-        yield call(updateHeadersClient, headers);
+        yield put(updateHeaders(headers));
         yield put(updateMessageSuccess(payload.conversationId, data.message));
     } else {
         yield put(updateMessageError());
@@ -52,7 +52,7 @@ export function * deleteMessage ({payload}) {
     const headersForRequest = yield select(getHeadersState);
     const { headers, error } = yield call(api.messages.deleteMessage, payload, headersForRequest);
     if (headers && !error) {
-        yield call(updateHeadersClient, headers);
+        yield put(updateHeaders(headers));
         yield put(deleteMessageSuccess(payload.conversationId, payload.messageId));
     } else {
         yield put(deleteMessageError());

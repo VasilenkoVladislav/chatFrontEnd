@@ -4,13 +4,13 @@ import api from 'configApi/apiAuth';
 import { REGISTRATION_REQUEST } from 'redux/constansActions';
 import { replace } from 'react-router-redux';
 import { signInSuccess } from 'redux/actions/entities/authenticateActions';
-import { updateHeadersClient } from 'redux/sagas/headersSaga';
+import { updateHeaders } from 'redux/actions/entities/headersActions';
 
 export function * registration ({payload}) {
     const { data, headers } = yield call(api.registrations.registration, payload);
     if (data && headers) {
         yield put(registrationSuccess());
-        yield call(updateHeadersClient, headers);
+        yield put(updateHeaders(headers));
         yield put(signInSuccess(data));
         yield put(replace('/'));
     } else {

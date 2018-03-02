@@ -1,8 +1,8 @@
 import './ItemsSearch.scss';
-import _ from 'lodash';
 import PropTypes from 'prop-types';
 import React from 'react';
 import Select from 'react-select';
+import SelectSearchOption from 'components/CustomComponentSelect/SelectSearchOption';
 
 const propTypes = {
     multi: PropTypes.bool,
@@ -19,19 +19,15 @@ const propTypes = {
 };
 
 const ItemsSearch = (props) => {
-    const getOptions = (input) => {
+    const getOptions = async (input) => {
         if (!input) {
-            return Promise.resolve({ options: [] });
+            return { options: [] };
         }
-        let resArray = [];
         const data = {
             [props.searchParams]: input
         };
-        return props.getOptions(data)
-            .then(response => {
-                _.each(response, item => resArray.push(item));
-                return {options: resArray};
-            });
+        const options = await props.getOptions(data);
+        return { options };
     };
     return (
         <div className="ch-items-search-wrap">
@@ -45,6 +41,7 @@ const ItemsSearch = (props) => {
                 labelKey={props.labelKey}
                 valueKey={props.valueKey}
                 onChange={props.onChange}
+                optionComponent={SelectSearchOption}
                 loadOptions={getOptions}/>
         </div>
     );

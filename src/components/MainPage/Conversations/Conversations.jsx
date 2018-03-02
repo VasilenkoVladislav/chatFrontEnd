@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Conversation from 'components/MainPage/Conversation';
 import ItemsSearch from 'components/Core/ItemsSearch';
 import PropTypes from 'prop-types';
+import { search } from 'api/utils/Search';
 
 const propTypes = {
     currentUserSmallAvatar: PropTypes.string.isRequired,
@@ -10,6 +11,7 @@ const propTypes = {
     conversationIdShow: PropTypes.string.isRequired,
     conversations: PropTypes.array.isRequired,
     closeConversation: PropTypes.func.isRequired,
+    createConversation: PropTypes.func.isRequired,
     getConversations: PropTypes.func.isRequired,
     showConversation: PropTypes.func.isRequired
 };
@@ -21,8 +23,13 @@ class Conversations extends Component {
     componentWillMount () {
         this.props.getConversations();
     }
-    onChangeItemsSearch = (user) => {
-        console.log(user);
+    onChangeItemsSearch = ({id}) => {
+        const data = {
+            conversation: {
+                user_id: id
+            }
+        };
+        this.props.createConversation(data);
     };
     render () {
         return (
@@ -47,7 +54,7 @@ class Conversations extends Component {
                         valueKey="id"
                         placeholderMessage="Search for people"
                         searchParams="search_users"
-                        getOptions={() => Promise.resolve({})}/>
+                        getOptions={search.searchUsers}/>
                 </header>
                 <div className="ch-conversations-container">
                     <ul className="ch-conversation-list-wrap">

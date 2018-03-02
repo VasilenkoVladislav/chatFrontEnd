@@ -13,14 +13,14 @@ import { getConversationsSuccess,
 import { put, call, takeEvery, select } from 'redux-saga/effects';
 import api from 'configApi/apiResources';
 import { getHeadersState } from 'redux/selectors/entities/headersSelectors';
-import { updateHeadersClient } from 'redux/sagas/headersSaga';
+import { updateHeaders } from 'redux/actions/entities/headersActions';
 import { webSocketSingleton } from 'webSocket';
 
 export function * getConversations () {
     const headersForRequest = yield select(getHeadersState);
     const { data, headers } = yield call(api.conversations.getConversations, headersForRequest);
     if (data && headers) {
-        yield call(updateHeadersClient, headers);
+        yield put(updateHeaders(headers));
         Object.keys(data.conversations).map(key => {
             webSocketSingleton.getWebSocket().subscribeConversationChannel(key);
         });
@@ -34,7 +34,7 @@ export function * createConversation ({payload}) {
     const headersForRequest = yield select(getHeadersState);
     const { data, headers } = yield call(api.conversations.createConversation, payload, headersForRequest);
     if (data && headers) {
-        yield call(updateHeadersClient, headers);
+        yield put(updateHeaders(headers));
         webSocketSingleton.getWebSocket().subscribeConversationChannel(data.conversation.id);
         yield put(createConversationSuccess(data.conversation));
     } else {
@@ -46,7 +46,7 @@ export function * updateConversation ({payload}) {
     const headersForRequest = yield select(getHeadersState);
     const { data, headers } = yield call(api.conversations.updateConversation, payload, headersForRequest);
     if (data && headers) {
-        yield call(updateHeadersClient, headers);
+        yield put(updateHeaders(headers));
         yield put(updateConversationSuccess(data.conversation));
     } else {
         yield put(updateConversationError());
@@ -57,7 +57,7 @@ export function * deleteConversation ({payload}) {
     const headersForRequest = yield select(getHeadersState);
     const { headers, error } = yield call(api.conversations.deleteConversation, payload, headersForRequest);
     if (headers && !error) {
-        yield call(updateHeadersClient, headers);
+        yield put(updateHeaders(headers));
         yield put(deleteConversationSuccess(payload));
     } else {
         yield put(deleteConversationError());

@@ -7,7 +7,7 @@ import { oAuthTokenFormat } from 'default/tokenFormat';
 import { openPopupOAuthSignIn } from 'redux/utils/popup';
 import queryString from 'query-string';
 import { replace } from 'react-router-redux';
-import { updateHeadersClient } from 'redux/sagas/headersSaga';
+import { updateHeaders } from 'redux/actions/entities/headersActions';
 import { validateTokenRequest } from 'redux/actions/entities/oAuthenticateActions';
 
 export function * oAuthSignIn ({payload}) {
@@ -18,7 +18,7 @@ export function * oAuthSignIn ({payload}) {
 export function * validateToken ({payload}) {
     const { data, headers } = yield call(api.authentications.validateToken, payload);
     if (data && headers) {
-        yield call(updateHeadersClient, headers);
+        yield put(updateHeaders(headers));
         yield put(signInSuccess(data));
         yield put(replace('/'));
     } else {

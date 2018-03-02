@@ -18,9 +18,6 @@ export const VALIDATE_TOKEN_REQUEST = 'VALIDATE_TOKEN_REQUEST';
 // token entities
 export const UPDATE_HEADERS = 'UPDATE_HEADERS';
 
-// cookie entities
-export const UPDATE_COOKIE = 'UPDATE_COOKIE';
-
 // conversations entities
 export const GET_CONVERSATIONS_REQUEST = 'GET_CONVERSATIONS_REQUEST';
 export const GET_CONVERSATIONS_SUCCESS = 'GET_CONVERSATIONS_SUCCESS';

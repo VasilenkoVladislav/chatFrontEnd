@@ -3,7 +3,6 @@ import Authentications from './Authentications';
 import Conversations from './Conversations';
 import Messages from './Messages';
 import Registrations from './Registrations';
-import Search from './Search';
 
 export default function ({ apiPrefix } = {}) {
     const api = new ApiClient({ prefix: apiPrefix});
@@ -11,7 +10,6 @@ export default function ({ apiPrefix } = {}) {
         authentications: new Authentications({apiClient: api}),
         conversations: new Conversations({apiClient: api}),
         messages: new Messages({apiClient: api}),
-        registrations: new Registrations({apiClient: api}),
-        search: new Search({apiClient: api})
+        registrations: new Registrations({apiClient: api})
     };
 }

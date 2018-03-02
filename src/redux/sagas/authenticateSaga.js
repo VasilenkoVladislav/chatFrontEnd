@@ -4,12 +4,12 @@ import { signInSuccess, signInError, signOutSuccess, signOutError } from 'redux/
 import api from 'configApi/apiAuth';
 import { getHeadersState } from 'redux/selectors/entities/headersSelectors';
 import { replace } from 'react-router-redux';
-import { updateHeadersClient } from 'redux/sagas/headersSaga';
+import { updateHeaders } from 'redux/actions/entities/headersActions';
 
 export function * signIn ({payload}) {
     const { data, headers } = yield call(api.authentications.signIn, payload);
     if (data && headers) {
-        yield call(updateHeadersClient, headers);
+        yield put(updateHeaders(headers));
         yield put(signInSuccess(data));
         yield put(replace('/'));
     } else {

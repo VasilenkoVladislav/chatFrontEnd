@@ -4,6 +4,7 @@ import createSagaMiddleware from 'redux-saga';
 import { currentTime } from 'helpers/currentTime';
 import { getUserIsSignInState } from 'redux/selectors/entities/userSelectors';
 import rootSaga from 'redux/sagas';
+import { search } from 'api/utils/Search';
 import { syncHistoryWithStore } from 'react-router-redux';
 import { webSocketSingleton } from 'webSocket';
 
@@ -16,6 +17,7 @@ export function initialize () {
     const head = document.getElementsByTagName('head')[0];
     const initialStateScript = document.getElementById('initialState');
     webSocketSingleton.initializeWebSocket(store);
+    search.initialize(store);
     if (window.REDUX_INITIAL_STATE && initialStateScript) {
         delete window.REDUX_INITIAL_STATE;
         head.removeChild(initialStateScript);
