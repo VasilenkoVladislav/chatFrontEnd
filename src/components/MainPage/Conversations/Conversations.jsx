@@ -23,13 +23,18 @@ class Conversations extends Component {
     componentWillMount () {
         this.props.getConversations();
     }
-    onChangeItemsSearch = ({id}) => {
-        const data = {
-            conversation: {
-                user_id: id
-            }
-        };
-        this.props.createConversation(data);
+    onChangeItemsSearch = (result) => {
+        if (result.conversation_id) {
+            this.props.showConversation(result.conversation_id);
+        } else {
+            const data = {
+                conversation: {
+                    id: result.conversation_id,
+                    user_id: result.id
+                }
+            };
+            this.props.createConversation(data);
+        }
     };
     render () {
         return (
@@ -46,6 +51,7 @@ class Conversations extends Component {
                         <i className="ch-icon fas fa-ellipsis-h"/>
                     </div>
                     <ItemsSearch
+                        cache={false}
                         onChange={this.onChangeItemsSearch}
                         multi={false}
                         backspaceRemoves={true}

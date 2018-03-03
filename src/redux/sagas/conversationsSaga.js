@@ -13,6 +13,7 @@ import { getConversationsSuccess,
 import { put, call, takeEvery, select } from 'redux-saga/effects';
 import api from 'configApi/apiResources';
 import { getHeadersState } from 'redux/selectors/entities/headersSelectors';
+import { showConversation } from 'redux/actions/ui/conversationActions';
 import { updateHeaders } from 'redux/actions/entities/headersActions';
 import { webSocketSingleton } from 'webSocket';
 
@@ -37,6 +38,7 @@ export function * createConversation ({payload}) {
         yield put(updateHeaders(headers));
         webSocketSingleton.getWebSocket().subscribeConversationChannel(data.conversation.id);
         yield put(createConversationSuccess(data.conversation));
+        yield put(showConversation(data.conversation.id));
     } else {
         yield put(createConversationError());
     }

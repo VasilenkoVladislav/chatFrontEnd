@@ -5,6 +5,7 @@ import Select from 'react-select';
 import SelectSearchOption from 'components/CustomComponentSelect/SelectSearchOption';
 
 const propTypes = {
+    cache: PropTypes.bool,
     multi: PropTypes.bool,
     searchable: PropTypes.bool,
     maxLength: PropTypes.number,
@@ -32,6 +33,7 @@ const ItemsSearch = (props) => {
     return (
         <div className="ch-items-search-wrap">
             <Select.Async
+                cache={props.cache}
                 inputProps={{maxLength: props.maxLength || 30}}
                 placeholder={props.placeholderMessage}
                 value={props.value}
