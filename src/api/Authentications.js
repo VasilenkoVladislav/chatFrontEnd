@@ -1,5 +1,6 @@
 import Base from './Base';
 import config from 'configApi/config';
+import Cookies from 'js-cookie';
 
 export default class Authentications extends Base {
     signIn = ({ email, password }) => {
@@ -9,6 +10,7 @@ export default class Authentications extends Base {
         return this.apiClient.get(config.authentication.validateToken, {}, headers);
     };
     signOut = (headers) => {
+        Cookies.remove('authHeaders');
         return this.apiClient.delete(config.authentication.signOut, headers);
     };
 }

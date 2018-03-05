@@ -20,6 +20,23 @@
       position: relative;
       margin-bottom: 20px;
       border-bottom: 2px solid #d9d9d9;
+      &::before {
+        content: "";
+        display: block;
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: $color-hover-purple;
+        -webkit-transition: all 0.5s;
+        -o-transition: all 0.5s;
+        -moz-transition: all 0.5s;
+        transition: all 0.5s;
+      }
+      &:focus-within::before {
+          width: 100%;
+        }
     }
     &-icon {
       position: absolute;
@@ -48,6 +65,7 @@
       padding: 0 7px 0 43px;
       outline: none;
       border: none;
+      box-sizing: border-box;
     }
     &-forgot-pass-wrap {
       text-align: right;
@@ -63,7 +81,7 @@
       -o-transition: all 0.4s;
       -moz-transition: all 0.4s;
       &:hover {
-        color: $color-hover;
+        color: $color-hover-purple;
       }
     }
     &-button-wrap {
@@ -85,7 +103,7 @@
       z-index: -1;
       width: 300%;
       height: 100%;
-      background: $color-hover;
+      background: $color-hover-purple;
       background: -webkit-linear-gradient(right, #00dbde, #fc00ff, #00dbde, #fc00ff);
       background: -o-linear-gradient(right, #00dbde, #fc00ff, #00dbde, #fc00ff);
       background: -moz-linear-gradient(right, #00dbde, #fc00ff, #00dbde, #fc00ff);

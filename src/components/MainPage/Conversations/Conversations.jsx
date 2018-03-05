@@ -1,4 +1,5 @@
 import './Conversations.scss';
+import { DropDown, DropDownToggle, DropDownMenu, DropDownItem } from 'components/Core/DropDown';
 import React, { Component } from 'react';
 import Conversation from 'components/MainPage/Conversation';
 import ItemsSearch from 'components/Core/ItemsSearch';
@@ -13,16 +14,21 @@ const propTypes = {
     closeConversation: PropTypes.func.isRequired,
     createConversation: PropTypes.func.isRequired,
     getConversations: PropTypes.func.isRequired,
-    showConversation: PropTypes.func.isRequired
+    showConversation: PropTypes.func.isRequired,
+    signOut: PropTypes.func.isRequired
 };
 
 class Conversations extends Component {
     constructor (props) {
         super(props);
+        this.state = { isOpen: false };
     }
     componentWillMount () {
         this.props.getConversations();
     }
+    toggle = () => {
+        this.setState({isOpen: !this.state.isOpen});
+    };
     onChangeItemsSearch = (result) => {
         if (result.conversation_id) {
             this.props.showConversation(result.conversation_id);
@@ -48,7 +54,16 @@ class Conversations extends Component {
                                 <span className="ch-conversations-header-status">Available</span>
                             </div>
                         </div>
-                        <i className="ch-icon fas fa-ellipsis-h"/>
+                        <DropDown isOpen={this.state.isOpen} toggle={this.toggle}>
+                            <DropDownToggle>
+                                <i className="ch-icon fas fa-ellipsis-h"/>
+                            </DropDownToggle>
+                            <DropDownMenu>
+                                <DropDownItem>Help and feedback</DropDownItem>
+                                <DropDownItem>Settings</DropDownItem>
+                                <DropDownItem onClick={this.props.signOut}>Sign Out</DropDownItem>
+                            </DropDownMenu>
+                        </DropDown>
                     </div>
                     <ItemsSearch
                         cache={false}

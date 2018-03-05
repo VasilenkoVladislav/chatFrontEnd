@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import Conversations from './Conversations';
 import { getConversationIdShowState } from 'redux/selectors/ui/conversationSelectors';
 import { getConversationsEntitiesState } from 'redux/selectors/entities/conversationsSelectors';
+import { signOutRequest } from 'redux/actions/entities/authenticateActions';
 
 function mapStateToProps (state) {
     return {
@@ -20,7 +21,8 @@ function mapDispatchToProps (dispatch) {
         closeConversation: () => dispatch(closeConversation()),
         getConversations: () => dispatch(getConversationsRequest()),
         createConversation: (userId) => dispatch(createConversationRequest(userId)),
-        showConversation: (conversationId) => dispatch(showConversation(conversationId))
+        showConversation: (conversationId) => dispatch(showConversation(conversationId)),
+        signOut: () => dispatch(signOutRequest())
     };
 }
 

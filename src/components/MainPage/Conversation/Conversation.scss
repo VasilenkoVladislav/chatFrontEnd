@@ -1,3 +1,5 @@
+@import "../../../utils/variables";
+
 .ch-conversation-wrap {
   display: flex;
   align-items: center;
@@ -6,10 +8,10 @@
   height: 40px;
   cursor: pointer;
   &:hover {
-    background: #5a5a5a;
+    background: $color-hover-black;
   }
   &.active {
-    background: #444344;
+    background: $color-active-black;
   }
   .ch-conversation-userinfo-wrap {
     display: flex;

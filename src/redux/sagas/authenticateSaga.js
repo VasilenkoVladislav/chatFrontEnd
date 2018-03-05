@@ -1,6 +1,6 @@
 import { put, call, takeLatest, select } from 'redux-saga/effects';
 import { SIGN_IN_REQUEST, SIGN_OUT_REQUEST } from 'redux/constansActions';
-import { signInSuccess, signInError, signOutSuccess, signOutError } from 'redux/actions/entities/authenticateActions';
+import { signInSuccess, signInError, signOutSuccess } from 'redux/actions/entities/authenticateActions';
 import api from 'configApi/apiAuth';
 import { getHeadersState } from 'redux/selectors/entities/headersSelectors';
 import { replace } from 'react-router-redux';
@@ -19,13 +19,9 @@ export function * signIn ({payload}) {
 
 export function * signOut () {
     const headersForRequest = yield select(getHeadersState);
-    const { error } = yield call(api.authentications.signOut, headersForRequest);
-    if (!error) {
-        yield put(signOutSuccess());
-        yield put(replace('/sign_in'));
-    } else {
-        yield put(signOutError());
-    }
+    yield call(api.authentications.signOut, headersForRequest);
+    yield put(signOutSuccess());
+    yield put(replace('/sign_in'));
 }
 
 export function * watchSignIn () {

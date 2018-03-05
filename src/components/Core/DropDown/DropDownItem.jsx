@@ -2,11 +2,11 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 const propTypes = {
-    className: PropTypes.string,
+    onClick: PropTypes.func,
     children: PropTypes.node.isRequired
 };
 
-const DropDownItem = ({children, className}) => <div className={className}>{children}</div>;
+const DropDownItem = ({children, onClick}) => <div className="ch-dropdown-item" onClick={onClick}>{children}</div>;
 
 DropDownItem.propTypes = propTypes;
 

@@ -1,0 +1,27 @@
+@import "../../../utils/variables";
+
+.ch-dropdown {
+  position: relative;
+  outline-style: none;
+  box-shadow: none;
+  border-color: transparent;
+  .ch-dropdown-menu {
+    position: absolute;
+    min-width: 175px;
+    z-index: 1;
+    box-shadow: 0 3px 8px rgba(0,0,0,.3);
+    border-radius: 10px;
+    left: -75px;
+    background: $color-active-black;
+    overflow: hidden;
+    .ch-dropdown-item {
+      cursor: pointer;
+      text-align: left;
+      padding: 10px 15px;
+      color: white;
+      &:hover {
+        background: $color-hover-black;
+      }
+    }
+  }
+}

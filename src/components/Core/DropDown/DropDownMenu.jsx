@@ -2,13 +2,12 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 const propTypes = {
-    className: PropTypes.string,
     children: PropTypes.node.isRequired
 };
 
-const DropDownMenu = ({children, className}) => {
+const DropDownMenu = ({children}) => {
     return (
-        <div className={className}>{children}</div>
+        <div className="ch-dropdown-menu">{children}</div>
     );
 };
 

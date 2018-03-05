@@ -3,7 +3,8 @@ import { SIGN_IN_REQUEST,
     SIGN_IN_ERROR,
     REGISTRATION_REQUEST,
     REGISTRATION_SUCCESS,
-    REGISTRATION_ERROR } from 'redux/constansActions';
+    REGISTRATION_ERROR,
+    SIGN_OUT_SUCCESS } from 'redux/constansActions';
 
 const initialState = {
     info: {},
@@ -22,6 +23,8 @@ export default function (state = initialState, action) {
     case REGISTRATION_ERROR:
     case REGISTRATION_SUCCESS:
         return { ...state, isLoading: false };
+    case SIGN_OUT_SUCCESS:
+        return initialState;
     default:
         return state;
     }

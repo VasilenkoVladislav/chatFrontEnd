@@ -2,8 +2,7 @@ import { SIGN_IN_REQUEST,
     SIGN_IN_SUCCESS,
     SIGN_IN_ERROR,
     SIGN_OUT_REQUEST,
-    SIGN_OUT_SUCCESS,
-    SIGN_OUT_ERROR } from 'redux/constansActions';
+    SIGN_OUT_SUCCESS } from 'redux/constansActions';
 
 export function signInRequest (email, password) {
     return { type: SIGN_IN_REQUEST, payload: {email, password} };
@@ -19,7 +18,4 @@ export function signOutRequest () {
 }
 export function signOutSuccess () {
     return { type: SIGN_OUT_SUCCESS };
-}
-export function signOutError () {
-    return { type: SIGN_OUT_ERROR };
 }

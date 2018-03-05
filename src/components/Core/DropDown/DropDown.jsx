@@ -1,20 +1,20 @@
+import './DropDown.scss';
 import React, { cloneElement } from 'react';
 import DropDownMenu from './DropDownMenu';
 import DropDownToggle from './DropDownToggle';
 import PropTypes from 'prop-types';
 
 const propTypes = {
-    className: PropTypes.string,
     children: PropTypes.node.isRequired,
     isOpen: PropTypes.bool.isRequired,
     toggle: PropTypes.func.isRequired
 };
 
-const DropDown = ({isOpen, toggle, children, className}) => {
+const DropDown = ({isOpen, toggle, children}) => {
     const handleBlur = () => {
-        // if (isOpen) {
-        //     toggle();
-        // }
+        if (isOpen) {
+            toggle();
+        }
     };
     const boundChildren = React.Children.map(children, child => {
         if (child.type === DropDownToggle) {
@@ -25,7 +25,7 @@ const DropDown = ({isOpen, toggle, children, className}) => {
         return child;
     });
     return (
-        <div className={className}
+        <div className="ch-dropdown"
             onClick={toggle}
             onBlur={handleBlur}
             tabIndex='0'>
