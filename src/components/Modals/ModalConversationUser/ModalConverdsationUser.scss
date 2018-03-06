@@ -1,0 +1,5 @@
+@import "../../../utils/modals";
+
+.Modal {
+  @include modalStyle(400px, 450px);
+}

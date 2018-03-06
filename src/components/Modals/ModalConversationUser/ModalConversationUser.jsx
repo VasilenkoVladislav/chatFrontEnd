@@ -5,7 +5,7 @@ import React from 'react';
 
 const propTypes = {
     isOpen: PropTypes.bool.isRequired,
-    toggleModal: PropTypes.bunc.isRequired
+    toggleModal: PropTypes.func.isRequired
 };
 
 const ModalConversationUser = ({ isOpen, toggleModal }) => {
@@ -13,7 +13,8 @@ const ModalConversationUser = ({ isOpen, toggleModal }) => {
         <Modal
             isOpen={isOpen}
             onRequestClose={toggleModal}
-            contentLabel="Example Modal">
+            contentLabel="Example Modal"
+            overlayClassName="Overlay">
             <div>Modal Conversation User</div>
         </Modal>);
 };

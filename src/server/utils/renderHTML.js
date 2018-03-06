@@ -27,6 +27,7 @@ export default function renderHTML (componentHTML, initialState) {
       <body>
         <div id="react-view">${componentHTML}</div>
         <div id="dev-tools"></div>
+         <div id="modal-root"></div>
         <script type="application/javascript" src=${bundle}></script>
       </body>
     </html>

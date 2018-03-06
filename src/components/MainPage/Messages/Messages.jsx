@@ -10,6 +10,7 @@ const propTypes = {
     conversation: PropTypes.object.isRequired,
     conversationId: PropTypes.string.isRequired,
     messages: PropTypes.array.isRequired,
+    toggleModal: PropTypes.func.isRequired,
     createMessage: PropTypes.func.isRequired,
     getMessages: PropTypes.func.isRequired,
     deleteMessage: PropTypes.func.isRequired,
@@ -42,8 +43,11 @@ class Messages extends Component {
             this.list.scrollTop = this.list.scrollHeight;
         }
     };
+    handleClickAvatar = () => {
+        this.props.toggleModal();
+    };
     renderMessages = () => {
-        const { messages, currentUserId, deleteMessage, showUpdateMessage } = this.props;
+        const { messages, currentUserId, deleteMessage, showUpdateMessage, toggleModal } = this.props;
         return messages.map((message, index) => {
             const prevIndex = index - 1;
             const prevMessageUserId = prevIndex >= 0 ? messages[prevIndex].user_id : '';
@@ -51,6 +55,7 @@ class Messages extends Component {
                 <Message message={message}
                     currentUserId={currentUserId}
                     prevMessageUserId={prevMessageUserId}
+                    toggleModal={toggleModal}
                     deleteMessage={deleteMessage}
                     showUpdateMessage={showUpdateMessage}/>
             </li>;
@@ -61,7 +66,9 @@ class Messages extends Component {
         return (
             <div className="ch-messages-wrap">
                 <header className="ch-messages-header">
-                    <img className="ch-avatar-small" src={conversation.user_avatar_small || '/static/images/default-avatar.png'}/>
+                    <img className="ch-avatar-small"
+                        src={conversation.user_avatar_small || '/static/images/default-avatar.png'}
+                        onClick={this.handleClickAvatar}/>
                     <div className="ch-messages-header-user-info-block">
                         <div className="ch-messages-header-username">
                             {conversation.user_name}

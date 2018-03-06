@@ -146,6 +146,7 @@
 
 @mixin avatarStyle ($size) {
   .ch-avatar-#{$size} {
+    cursor: pointer;
     @if $size == 'small' {
       width: $width-small;
       height: $height-small;

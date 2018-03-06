@@ -5,16 +5,20 @@ import React from 'react';
 const propTypes = {
     currentUserId: PropTypes.string.isRequired,
     message: PropTypes.object.isRequired,
+    toggleModal: PropTypes.func.isRequired,
     deleteMessage: PropTypes.func.isRequired,
     showUpdateMessage: PropTypes.func.isRequired
 };
 
-const Message = ({ message, currentUserId, prevMessageUserId, deleteMessage, showUpdateMessage}) => {
+const Message = ({ message, currentUserId, prevMessageUserId, deleteMessage, showUpdateMessage, toggleModal}) => {
     const handleClickDeleteMessage = () => {
         deleteMessage(message.id);
     };
     const handleClickUpdateMessage = () => {
         showUpdateMessage(message.id, message.content);
+    };
+    const handleClickAvatar = () => {
+        toggleModal();
     };
     return (
         <React.Fragment>
@@ -31,7 +35,9 @@ const Message = ({ message, currentUserId, prevMessageUserId, deleteMessage, sho
                 : <div className="ch-message-wrap conversation-user-message">
                     <div className="ch-message-avatar-wrap">
                         {prevMessageUserId !== message.user_id
-                            ? <img className="ch-avatar-small" src={message.user_avatar_small || '/static/images/default-avatar.png'}/>
+                            ? <img className="ch-avatar-small"
+                                src={message.user_avatar_small || '/static/images/default-avatar.png'}
+                                onClick={handleClickAvatar}/>
                             : null }
                     </div>
                     <div className="ch-message-content-wrap conversation-user-message-content">
